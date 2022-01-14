@@ -1,4 +1,5 @@
 package blackjack;
+
 import java.util.Scanner;
 
 public class Blackjack {
@@ -7,13 +8,13 @@ public class Blackjack {
 		System.out.println("Blackjack\nYou start with 50 chips");
 		System.out.println("");
 
-		//sets base chip count, can go + or - from here
+		// sets base chip count, can go + or - from here
 		int chips = 50;
 
 		boolean playAgain1 = true;
 
 		while (playAgain1) {
-			//begining of game
+			// begining of game
 			System.out.println("");
 			System.out.println("Okay let\'s begin!");
 			System.out.println("");
@@ -21,8 +22,8 @@ public class Blackjack {
 			int bet1 = myObj.nextInt();
 			System.out.println("");
 
-			if (bet1 > chips) {
-				bet1 = chips;
+			if (bet1 > pchips) {
+				bet1 = chis;
 			}
 
 			if (bet1 <= 0) {
@@ -32,14 +33,14 @@ public class Blackjack {
 			int splitBet1;
 			int splitBet2;
 
-			//defines the min and max of the number generator
+			// defines the min and max of the number generator
 			int min1 = 1;
 			int max1 = 13;
 
 			int min2 = 1;
 			int max2 = 10;
 
-			//dealer card gens
+			// dealer card gens
 			int dealerCard1 = (int) Math.floor(Math.random() * (max2 - min2 + 1) + min2);
 			int dealerCard2 = (int) Math.floor(Math.random() * (max2 - min2 + 1) + min2);
 
@@ -50,7 +51,7 @@ public class Blackjack {
 				dealerSum += dealerCard3;
 			}
 
-			//variables from the card number generator
+			// variables from the card number generator
 			int userCard1 = (int) Math.floor(Math.random() * (max1 - min1 + 1) + min1);
 
 			int card1Value = 0;
@@ -74,13 +75,13 @@ public class Blackjack {
 				card1Value = userCard1;
 			}
 
-			//tells user their first card
+			// tells user their first card
 			System.out.println("Your first card is " + card1);
 
 			int cardSum = card1Value;
 			int splitCardSum1 = card1Value;
 
-			//variables from the card number generator
+			// variables from the card number generator
 			int userCard2 = (int) Math.floor(Math.random() * (max1 - min1 + 1) + min1);
 
 			int card2Value = 0;
@@ -104,13 +105,13 @@ public class Blackjack {
 				card2Value = userCard2;
 			}
 
-			//checks for splits
+			// checks for splits
 			boolean split = false;
 
 			int userCardSum = card1Value + card2Value;
 			int splitCardSum2 = card2Value;
 
-			//tells user their cards
+			// tells user their cards
 			System.out.println("Your second card is " + card2);
 
 			while (card1.equals(card2) && !card1.equals("Ace")) {
@@ -137,7 +138,7 @@ public class Blackjack {
 
 				System.out.println("The dealer is showing a " + dealerCard2);
 
-				//ask user if they want to hit or stand
+				// ask user if they want to hit or stand
 				System.out.println("");
 
 				boolean hitOrStand1;
@@ -150,7 +151,7 @@ public class Blackjack {
 					if (hitOrStand.equals("hit")) {
 						hitOrStand1 = true;
 
-						//start of bet raising
+						// start of bet raising
 						if (hitOrStand1 == true) {
 
 							System.out.println("Do you want to raise?");
@@ -174,7 +175,7 @@ public class Blackjack {
 							}
 						}
 
-						//variables from the card number generator
+						// variables from the card number generator
 						int userCard3 = (int) Math.floor(Math.random() * (max1 - min1 + 1) + min1);
 						int card3Value = 0;
 
@@ -201,7 +202,7 @@ public class Blackjack {
 
 						cardSum += card3Value;
 
-						//check for ace bust
+						// check for ace bust
 						if (cardSum > 21 && card1Value == 11) {
 							card1Value = 1;
 							cardSum = cardSum - 10;
@@ -217,7 +218,7 @@ public class Blackjack {
 							cardSum = cardSum - 10;
 						}
 
-						//check for bust on nonsplits
+						// check for bust on nonsplits
 						if (cardSum > 21) {
 							System.out.println("Bust");
 							System.out.println("You bet " + bet1 + " chips");
@@ -270,7 +271,7 @@ public class Blackjack {
 
 				System.out.println("The dealer has a " + dealerCard1 + " and a " + dealerCard2);
 
-				//ask user if they want to hit or stand
+				// ask user if they want to hit or stand
 				System.out.println("");
 
 				boolean hitOrStand1;
@@ -283,7 +284,7 @@ public class Blackjack {
 					if (hitOrStand.equals("hit")) {
 						hitOrStand1 = true;
 
-						//start of bet raising
+						// start of bet raising
 						if (hitOrStand1 == true) {
 
 							System.out.println("Do you want to raise?");
@@ -307,7 +308,7 @@ public class Blackjack {
 							}
 						}
 
-						//variables from the card number generator
+						// variables from the card number generator
 						int userCard3 = (int) Math.floor(Math.random() * (max1 - min1 + 1) + min1);
 						int card3Value = 0;
 
@@ -334,7 +335,7 @@ public class Blackjack {
 
 						splitCardSum1 += card3Value;
 
-						//check for ace bust
+						// check for ace bust
 						if (splitCardSum1 > 21 && card1Value == 11) {
 							card1Value = 1;
 							splitCardSum1 = splitCardSum1 - 10;
@@ -350,7 +351,7 @@ public class Blackjack {
 							splitCardSum1 = splitCardSum1 - 10;
 						}
 
-						//check for bust on nonsplits
+						// check for bust on nonsplits
 						if (splitCardSum1 > 21) {
 							System.out.println("Bust");
 							System.out.println("You bet " + splitBet1 + " chips");
@@ -395,7 +396,7 @@ public class Blackjack {
 					}
 				}
 
-				//ask user if they want to hit or stand for the second card
+				// ask user if they want to hit or stand for the second card
 				System.out.println("");
 
 				System.out.println("Do you want to hit or stand on your second card?");
@@ -406,7 +407,7 @@ public class Blackjack {
 					if (hitOrStand.equals("hit")) {
 						hitOrStand1 = true;
 
-						//start of bet raising
+						// start of bet raising
 						if (hitOrStand1 == true) {
 
 							System.out.println("Do you want to raise?");
@@ -430,7 +431,7 @@ public class Blackjack {
 							}
 						}
 
-						//variables from the card number generator
+						// variables from the card number generator
 						int userCard4 = (int) Math.floor(Math.random() * (max1 - min1 + 1) + min1);
 						int card4Value = 0;
 
@@ -457,7 +458,7 @@ public class Blackjack {
 
 						splitCardSum2 += card4Value;
 
-						//check for ace bust
+						// check for ace bust
 						if (splitCardSum2 > 21 && card2Value == 11) {
 							card1Value = 1;
 							splitCardSum2 = splitCardSum2 - 10;
@@ -473,7 +474,7 @@ public class Blackjack {
 							splitCardSum2 = splitCardSum2 - 10;
 						}
 
-						//check for bust on nonsplits
+						// check for bust on nonsplits
 						if (splitCardSum2 > 21) {
 							System.out.println("Bust");
 							System.out.println("You bet " + splitBet2 + " chips");
