@@ -22,8 +22,8 @@ public class Blackjack {
 			int bet1 = myObj.nextInt();
 			System.out.println("");
 
-			if (bet1 > pchips) {
-				bet1 = chis;
+			if (bet1 > chips) {
+				bet1 = chips;
 			}
 
 			if (bet1 <= 0) {
