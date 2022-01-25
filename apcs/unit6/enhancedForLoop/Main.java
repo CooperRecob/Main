@@ -75,30 +75,32 @@ public class Main {
 
         String[] words = { "play", "ball", "plant", "fight" };
 
-        for( String word : words ) {
-	        word += "er";
+        for (String word : words) {
+            word += "er";
+            System.out.println(word);
         }
-        
+
         for (i = 0; i < words.length; i++) {
             System.out.println(words[i]);
         }
 
-        Animal[] wildAnimals1 = { new Animal( "Lion" ), new Animal( "Tiger"), new Animal( "Bear" ), new Animal( "Giraffe" ) };
+        Animal[] wildAnimals1 = { new Animal("Lion"), new Animal("Tiger"), new Animal("Bear"), new Animal("Giraffe") };
 
-        for( Animal a : wildAnimals1 ) {
-            a = new Animal( "Elephant" );
+        for (Animal a : wildAnimals1) {
+            a = new Animal("Elephant");
+            System.out.println(a);
         }
 
-        for(i = 0; i < wildAnimals1.length; i++) {
+        for (i = 0; i < wildAnimals1.length; i++) {
             System.out.println(wildAnimals1[i].toString());
         }
 
-        Animal[] wildAnimals2 = { new Animal( "Lion" ), new Animal( "Tiger"), new Animal( "Bear" ), new Animal( "Giraffe" ) };
+        Animal[] wildAnimals2 = { new Animal("Lion"), new Animal("Tiger"), new Animal("Bear"), new Animal("Giraffe") };
 
-        for( Animal a : wildAnimals2 ) {
-            a.setAnimal( "Dog" );
+        for (Animal a : wildAnimals2) {
+            a.setAnimal("Dog");
         }
-            
+
         for (i = 0; i < wildAnimals2.length; i++) {
             System.out.println(wildAnimals2[i].toString());
         }
