@@ -1,4 +1,4 @@
-package staticAssignment;
+package apcs.unit5.staticAssignment;
 
 public class Main {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package mathAndWrapperClasses;
+package apcs.unit2.mathAndWrapperClasses;
 
 public class Main {
     public static void main(String[] args) {

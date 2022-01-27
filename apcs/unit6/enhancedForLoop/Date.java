@@ -1,4 +1,4 @@
-package enhancedForLoop;
+package apcs.unit6.enhancedForLoop;
 
 public class Date {
     private String month;

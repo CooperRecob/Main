@@ -1,4 +1,4 @@
-package arrayAlgorithmsAssignment;
+package apcs.unit6.arrayAlgorithmsAssignment;
 
 public class Main {
 	public static void main(String[] args) {

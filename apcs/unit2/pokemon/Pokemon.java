@@ -1,4 +1,4 @@
-package pokemon;
+package apcs.unit2.pokemon;
 
 public class Pokemon {
 	/* private String name;

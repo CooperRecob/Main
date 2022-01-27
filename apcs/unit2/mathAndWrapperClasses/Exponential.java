@@ -1,4 +1,4 @@
-package mathAndWrapperClasses;
+package apcs.unit2.mathAndWrapperClasses;
 import java.lang.Math;
 
 public class Exponential {

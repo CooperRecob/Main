@@ -1,4 +1,4 @@
-package jframeTest;
+package apcs.unit1.jframeTest;
 import java.awt.FlowLayout;  
 import javax.swing.*;
 

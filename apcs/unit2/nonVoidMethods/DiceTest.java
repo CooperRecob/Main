@@ -1,4 +1,4 @@
-package nonVoidMethods;
+package apcs.unit2.nonVoidMethods;
 
 public class DiceTest {
 	public int roll1() {

@@ -1,4 +1,4 @@
-package additionPattern;
+package apcs.unit5.additionPattern;
 
 public class AdditionPattern {
 	private int addend;

@@ -1,4 +1,4 @@
-package planet;
+package apcs.unit2.planet;
 
 public class Main {
 	public static void main(String[]args) {

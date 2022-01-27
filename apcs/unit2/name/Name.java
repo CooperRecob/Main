@@ -1,4 +1,4 @@
-package name;
+package apcs.unit2.name;
 
 public class Name {
 	private String firstName;

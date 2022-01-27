@@ -1,4 +1,4 @@
-package pokemon;
+package apcs.unit2.pokemon;
 
 public class Main {
 	public static void main(String[]args) {

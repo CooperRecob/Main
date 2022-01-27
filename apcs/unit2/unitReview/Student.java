@@ -1,4 +1,4 @@
-package unitReview;
+package apcs.unit2.unitReview;
 
 public class Student {
 	/* private String name;

@@ -1,4 +1,4 @@
-package arrayAlgorithmsAssignment;
+package apcs.unit6.arrayAlgorithmsAssignment;
 
 public class Classroom {
     private String teacherName;

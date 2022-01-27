@@ -1,3 +1,4 @@
+package tests.hashMap;
 import java.util.HashMap;
 
 public class Main {

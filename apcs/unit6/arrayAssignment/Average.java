@@ -1,4 +1,4 @@
-package arrayAssignment;
+package apcs.unit6.arrayAssignment;
 
 public class Average {
 	private int [] array;

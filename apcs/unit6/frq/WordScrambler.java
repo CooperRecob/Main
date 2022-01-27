@@ -1,4 +1,4 @@
-package frq;
+package apcs.unit6.frq;
 
 public class WordScrambler() {
     private String[] scrambledWords;

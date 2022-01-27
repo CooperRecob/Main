@@ -1,4 +1,4 @@
-package parallelogram;
+package apcs.unit2.parallelogram;
 
 public class Parallelogram {
 	private int side1;

@@ -1,4 +1,4 @@
-package frq;
+package apcs.unit6.frq;
 
 public class Mountain {
     public static boolean isIncreasing(int[] array, int stop) {

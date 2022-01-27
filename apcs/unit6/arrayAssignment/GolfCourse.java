@@ -1,4 +1,4 @@
-package arrayAssignment;
+package apcs.unit6.arrayAssignment;
 
 public class GolfCourse {
 	private int [] holePar = {0, 0, 0, 0, 0, 0, 0, 0, 0};

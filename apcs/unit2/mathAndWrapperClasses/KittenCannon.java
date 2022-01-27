@@ -1,4 +1,4 @@
-package mathAndWrapperClasses;
+package apcs.unit2.mathAndWrapperClasses;
 
 public class KittenCannon {
 	private double angle;

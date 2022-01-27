@@ -1,4 +1,4 @@
-package staticAssignment;
+package apcs.unit5.staticAssignment;
 
 public class Rectangle {
 	private int length;

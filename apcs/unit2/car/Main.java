@@ -1,4 +1,4 @@
-package car;
+package apcs.unit2.car;
 
 public class Main {
 	public static void main(String[]args) {

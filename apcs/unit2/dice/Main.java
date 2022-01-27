@@ -1,4 +1,4 @@
-package dice;
+package apcs.unit2.dice;
 
 public class Main {
 	public static void main (String[]args) {

@@ -1,4 +1,4 @@
-package parallelogram;
+package apcs.unit2.parallelogram;
 
 public class Main {
 	public static void main(String[] args) {
