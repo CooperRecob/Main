@@ -1,4 +1,4 @@
-package craps;
+package project.casino.craps;
 
 import java.util.Scanner;
 

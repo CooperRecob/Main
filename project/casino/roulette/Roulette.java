@@ -1,4 +1,4 @@
-package roulette;
+package project.casino.roulette;
 import java.util.Scanner;
 
 public class Roulette {
