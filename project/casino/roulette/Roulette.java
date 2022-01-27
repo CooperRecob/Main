@@ -86,5 +86,6 @@ public class Roulette {
 				}
 			}
 		}
+	myObj.close();
 	}
 }

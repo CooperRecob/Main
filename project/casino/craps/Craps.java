@@ -112,5 +112,6 @@ public class Craps {
 				}
 			}
 		}
+	myObj.close();
 	}
 }

@@ -1,5 +1,5 @@
 package apcs.unit6.frq;
-
+/*
 public class WordScrambler() {
     private String[] scrambledWords;
     
@@ -24,3 +24,4 @@ public class WordScrambler() {
         return result;
     }
 }
+*/
