@@ -2,13 +2,13 @@ package apcs.unit7.arrayListWithMethods;
 import java.util.ArrayList;
 
 public class Classroom {
-    private String subject;
-    private String teacher;
+    //private String subject;
+    //private String teacher;
     private ArrayList<Student> students = new ArrayList<Student>();
 
     public Classroom(String subject, String teacher, ArrayList<Student> students) {
-        this.subject = subject;
-        this.teacher = teacher;
+        //this.subject = subject;
+        //this.teacher = teacher;
         this.students = students;
     }
 
