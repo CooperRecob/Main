@@ -4,7 +4,6 @@ import java.util.HashMap;
 public class Phone {
     private String model;
     private String color;
-    private String[] phoneStuff;
     private String[] phone1 = {"Iphone 13", "Red"};
     private String[] phone2 = {"Iphone 12", "White"};
     private String[] phone3 = {"Samsung Galaxy S10", "Green"};

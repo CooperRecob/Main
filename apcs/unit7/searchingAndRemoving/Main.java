@@ -24,7 +24,7 @@ public class Main {
                 phonesWithRed.add(i);
             }
         }
-        return phonesWithRed;
+        return phonesWithRed; 
     }
 
     public static ArrayList<Phone> RemoveRed(ArrayList<Integer> phonesWithRed, ArrayList<Phone> phones) {
