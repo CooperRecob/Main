@@ -4,6 +4,7 @@ public class Board {
     private int size;
     private boolean gameover;
     private boolean won;
+		private int clickCount;
     private Mine[][] board;
     private String[][] boardDisplay;
 
@@ -11,10 +12,11 @@ public class Board {
         this.size = size;
         gameover = false;
         won = false;
+				clickCount = 0;
 
         board = new Mine[size][size];
 
-        for (int i = 0; i < size * 2; i++) {
+        for (int i = 0; i < size; i++) {
             int x = (int) (Math.random() * size);
             int y = (int) (Math.random() * size);
 
@@ -95,11 +97,19 @@ public class Board {
                 }
             }
         }
+				won = true;
         return true;
     }
 
     public void click(int x, int y) {
+				if(clickCount == 0) {
+					if(board[x][y] != null) {
+						board[x][y] = null;
+					}
+				}
         update(x, y);
+				checkIfWon();
+				clickCount++;
     }
 
     private void update(int x, int y) {
