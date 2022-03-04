@@ -4,7 +4,7 @@ public class Board {
     private int size;
     private boolean gameover;
     private boolean won;
-		private int clickCount;
+    private int clickCount;
     private Mine[][] board;
     private String[][] boardDisplay;
 
@@ -12,7 +12,7 @@ public class Board {
         this.size = size;
         gameover = false;
         won = false;
-				clickCount = 0;
+        clickCount = 0;
 
         board = new Mine[size][size];
 
@@ -75,13 +75,13 @@ public class Board {
     public void flag(int x, int y) {
         if (!boardDisplay[x][y].equals("F")) {
             boardDisplay[x][y] = "F";
-            
-            if(board[x][y] != null) {
+
+            if (board[x][y] != null) {
                 board[x][y].flag(true);
             }
         } else if (boardDisplay[x][y].equals("F")) {
             boardDisplay[x][y] = ".";
-            if(board[x][y] != null) {
+            if (board[x][y] != null) {
                 board[x][y].flag(false);
             }
         }
@@ -92,24 +92,24 @@ public class Board {
     public boolean checkIfWon() {
         for (Mine[] row : board) {
             for (Mine mine : row) {
-                if(mine != null && mine.getFlagStatus() == false) {
+                if (mine != null && mine.getFlagStatus() == false) {
                     return false;
                 }
             }
         }
-				won = true;
+        won = true;
         return true;
     }
 
     public void click(int x, int y) {
-				if(clickCount == 0) {
-					if(board[x][y] != null) {
-						board[x][y] = null;
-					}
-				}
+        if (clickCount == 0) {
+            if (board[x][y] != null) {
+                board[x][y] = null;
+            }
+        }
         update(x, y);
-				checkIfWon();
-				clickCount++;
+        checkIfWon();
+        clickCount++;
     }
 
     private void update(int x, int y) {
@@ -155,7 +155,7 @@ public class Board {
     public void gameWon() {
         for (String[] row : boardDisplay) {
             for (String s : row) {
-                if(!s.equals(".") && !s.equals("M")) {
+                if (!s.equals(".") && !s.equals("M")) {
                     won = true;
                 }
             }
@@ -170,7 +170,7 @@ public class Board {
         System.out.print("   ");
 
         for (int i = 0; i < board[0].length; i++) {
-            if(i > 8) {
+            if (i > 8) {
                 System.out.print((i + 1) + " ");
             } else {
                 System.out.print((i + 1) + "  ");
@@ -180,7 +180,7 @@ public class Board {
         System.out.println();
 
         for (int i = 0; i < boardDisplay.length; i++) {
-            if(i < 9) {
+            if (i < 9) {
                 System.out.print((i + 1) + "  ");
             } else {
                 System.out.print((i + 1) + " ");
