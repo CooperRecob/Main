@@ -14,7 +14,6 @@ public class Main {
         System.out.println("Where do you wanna click?");
         System.out.print("x=");
         int x = intInput.nextInt();
-        System.out.println();
 
         if (x > size) {
             x = size - 1;
@@ -47,7 +46,6 @@ public class Main {
                 System.out.println("Where do you wanna click?");
                 System.out.print("x=");
                 x = intInput.nextInt();
-                System.out.println();
 
                 if (x > size) {
                     x = size - 1;
