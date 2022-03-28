@@ -1,44 +1,23 @@
 package tests.copilot;
 
-public class Dog {
-    private String name;
-    private int age;
-
-
+public class Dog extends Animal {
     public Dog(String name, int age) {
-        this.name = name;
-        this.age = age;
+        super(name, age);
     }
 
     public void birthday() {
-        this.age++;
+        setAge(getAge() + 1);
     }
 
     public void bark() {
         System.out.println("Woof!");
     }
-    
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    //toString method
+    // toString method
     public String toString() {
         return "Dog{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
+                "name='" + getName() + '\'' +
+                ", age=" + getAge() +
                 '}';
     }
 }
