@@ -8,8 +8,8 @@ public class Main {
         boringEmployee.getPaid();
         System.out.println(boringEmployee);
         System.out.println();
-        
-        Cooper cooper = new Cooper(15, "Cooper", 89, "CooperRecob");
+
+        Cooper cooper = new Cooper(15, "Cooper", 44, "Julie");
 
         cooper.playCoC(8);
         cooper.beCool();
@@ -17,7 +17,7 @@ public class Main {
         System.out.println();
 
         CoCPlayer cocPlayer = new CoCPlayer(15, "Cooper", 89, "CooperRecob");
-        
+
         cocPlayer.playCoC(8);
         cocPlayer.beCool();
         System.out.println(cocPlayer);
