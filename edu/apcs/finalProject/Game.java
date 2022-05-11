@@ -40,6 +40,7 @@ public class Game {
             System.out.println("3. Go into the wild");
             System.out.println("4. Go to the store");
             System.out.println("5. Check your stats");
+            System.out.println("6. Visit Nurse Joy");
             int choice = input.nextInt();
             if (choice == 1) {
                 System.out.println("Which gym leader do you want to battle?");
@@ -83,7 +84,7 @@ public class Game {
             } else if (choice == 3) {
                 System.out.println("You go into the wild!");
                 Pokemon[] wildPokemonList = new Pokemon[] {
-                        new Pokemon("Bugman", "water", 1, 60, 60,
+                        new Pokemon("Bugman", "water", "wild", 1, 60, 60,
                                 new Attack[] { new Attack("Bite", "poison", 5),
                                         new Attack("Water Gun", "normal", 20 ) })};
                 int rand = (int) (Math.random() * wildPokemonList.length);
@@ -152,6 +153,11 @@ public class Game {
                 }
                 for (String badge : badges) {
                     System.out.println(badge);
+                }
+            } else if (choice == 6) {
+                System.out.println("Your healed all your pokemon!");
+                for (Pokemon pokemon : user.getTeam()) {
+                    pokemon.heal(pokemon.getMaxHealth());
                 }
             }
         }

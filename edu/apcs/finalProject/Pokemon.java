@@ -1,7 +1,5 @@
 package edu.apcs.finalProject;
 
-import java.util.HashMap;
-
 public class Pokemon {
     private String name;
     private String type;
@@ -13,16 +11,6 @@ public class Pokemon {
     private double damageMultiplier;
     private double defenseMultiplier;
     private Attack[] attacks;
-    private HashMap<String, String> weaknessesAndStrengths = new HashMap<String, String>() {
-        {
-            put("fire", "grass");
-            put("grass", "water");
-            put("water", "fire");
-            put("electric", "water");
-            put("psychic", "ghost");
-            put("ghost", "psychic");
-        }
-    };
 
     public Pokemon(String name, String type, int level, int currentHealth, int maxHealth, Attack[] attacks) {
         this.name = name;
@@ -53,7 +41,7 @@ public class Pokemon {
 
     public Pokemon(int level, int currentHealth, Attack[] attacks) {
         name = "Pikachu";
-        type = "Electric";
+        type = "electric";
         catchType = "normal";
         status = "healthy";
         levelUp(level);
@@ -67,21 +55,33 @@ public class Pokemon {
     public void attack(Attack attackName, Pokemon opponent) {
         int damage = (int) (attackName.getDamage() * damageMultiplier);
 
-        if (weakTo(attackName.getType())) {
+        if (strongTo(type, opponent.getType())) {
+            System.out.println("It's super effective!");
             damage *= 2;
-        } else if (strongTo(attackName.getType())) {
+        } else if (weakTo(type, opponent.getType())) {
+            System.out.println("It's not very effective...");
             damage /= 2;
         }
 
         opponent.takeDamage(damage);
     }
 
-    private boolean strongTo(String type) {
-        return weaknessesAndStrengths.get(this.type) == type;
+    private boolean strongTo(String attackingType, String defendingType ) {
+        return attackingType.equals("fire") && defendingType.equals("grass") ||
+                attackingType.equals("water") && defendingType.equals("fire") ||
+                attackingType.equals("grass") && defendingType.equals("water") ||
+                attackingType.equals("electric") && defendingType.equals("water") ||
+                attackingType.equals("water") && defendingType.equals("electric") ||
+                attackingType.equals("electric") && defendingType.equals("grass") ||
+                attackingType.equals("grass") && defendingType.equals("electric");
     }
 
-    public boolean weakTo(String type) {
-        return weaknessesAndStrengths.get(type) == this.type;
+    private boolean weakTo(String attackingType, String defendingType) {
+        return attackingType.equals("grass") && defendingType.equals("fire") ||
+                attackingType.equals("fire") && defendingType.equals("water") ||
+                attackingType.equals("water") && defendingType.equals("grass") ||
+                attackingType.equals("electric") && defendingType.equals("grass") ||
+                attackingType.equals("grass") && defendingType.equals("electric");
     }
 
     public void takeDamage(int damage) {
@@ -164,10 +164,6 @@ public class Pokemon {
 
     public Attack[] getAttacks() {
         return attacks;
-    }
-
-    public HashMap<String, String> getWeaknessesAndStrengths() {
-        return weaknessesAndStrengths;
     }
 
     public void setAttack(int index, Attack attack) {
