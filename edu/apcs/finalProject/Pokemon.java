@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Pokemon {
     private String name;
     private String type;
+    private String catchType;
     private String status;
     private int level;
     private int currentHealth;
@@ -12,27 +13,35 @@ public class Pokemon {
     private double damageMultiplier;
     private double defenseMultiplier;
     private Attack[] attacks;
-    private HashMap<String, String> weaknessesAndStrengths = new HashMap<>(){{
-        put("fire", "water");
-        put("water", "electric");
-        put("grass", "fire");
-        put("electric", "grass");
-        put("psychic", "bug");
-        put("bug", "fire");
-        put("rock", "water");
-        put("ground", "grass");
-        put("flying", "grass");
-        put("fighting", "bug");
-        put("poison", "grass");
-        put("ghost", "ghost");
-        put("dark", "dark");
-        put("steel", "steel");
-        put("fairy", "fighting");
-    }};
+    private HashMap<String, String> weaknessesAndStrengths = new HashMap<String, String>() {
+        {
+            put("fire", "grass");
+            put("grass", "water");
+            put("water", "fire");
+            put("electric", "water");
+            put("psychic", "ghost");
+            put("ghost", "psychic");
+        }
+    };
 
     public Pokemon(String name, String type, int level, int currentHealth, int maxHealth, Attack[] attacks) {
         this.name = name;
         this.type = type;
+        catchType = "normal";
+        status = "healthy";
+        levelUp(level);
+        this.currentHealth = currentHealth;
+        this.maxHealth = maxHealth;
+        damageMultiplier = 1;
+        defenseMultiplier = 1;
+        this.attacks = attacks;
+    }
+
+    public Pokemon(String name, String type, String catchType, int level, int currentHealth, int maxHealth,
+            Attack[] attacks) {
+        this.name = name;
+        this.type = type;
+        this.catchType = catchType;
         status = "healthy";
         levelUp(level);
         this.currentHealth = currentHealth;
@@ -45,6 +54,7 @@ public class Pokemon {
     public Pokemon(int level, int currentHealth, Attack[] attacks) {
         name = "Pikachu";
         type = "Electric";
+        catchType = "normal";
         status = "healthy";
         levelUp(level);
         this.currentHealth = currentHealth;
@@ -56,15 +66,25 @@ public class Pokemon {
 
     public void attack(Attack attackName, Pokemon opponent) {
         int damage = (int) (attackName.getDamage() * damageMultiplier);
-        if(type.equals(opponent.getType())) {
+
+        if (weakTo(attackName.getType())) {
             damage *= 2;
-        } else if(opponent.getWeaknessesAndStrengths().containsKey(type)) {
-            damage *= 0.5;
+        } else if (strongTo(attackName.getType())) {
+            damage /= 2;
         }
+
         opponent.takeDamage(damage);
     }
 
-    void takeDamage(int damage) {
+    private boolean strongTo(String type) {
+        return weaknessesAndStrengths.get(this.type) == type;
+    }
+
+    public boolean weakTo(String type) {
+        return weaknessesAndStrengths.get(type) == this.type;
+    }
+
+    public void takeDamage(int damage) {
         currentHealth -= damage;
     }
 
@@ -95,7 +115,7 @@ public class Pokemon {
     }
 
     public void heal(int amount) {
-        if((currentHealth += amount) > maxHealth) {
+        if ((currentHealth += amount) > maxHealth) {
             currentHealth = maxHealth;
         } else {
             currentHealth += amount;
@@ -108,6 +128,10 @@ public class Pokemon {
 
     public String getType() {
         return type;
+    }
+
+    public String getCatchType() {
+        return catchType;
     }
 
     public int getLevel() {
