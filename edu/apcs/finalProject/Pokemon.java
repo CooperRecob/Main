@@ -52,13 +52,13 @@ public class Pokemon {
         this.attacks = attacks;
     }
 
-    public void attack(Attack attackName, Pokemon opponent) {
-        int damage = (int) (attackName.getDamage() * damageMultiplier);
+    public void attack(Attack attack, Pokemon opponent) {
+        int damage = (int) (attack.getDamage() * damageMultiplier);
 
-        if (strongTo(type, opponent.getType())) {
+        if (strongTo(attack.getType(), opponent.getType())) {
             System.out.println("It's super effective!");
             damage *= 2;
-        } else if (weakTo(type, opponent.getType())) {
+        } else if (weakTo(attack.getType(), opponent.getType())) {
             System.out.println("It's not very effective...");
             damage /= 2;
         }

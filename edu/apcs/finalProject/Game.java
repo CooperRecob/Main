@@ -22,14 +22,14 @@ public class Game {
         System.out.println("3. Charmander");
         int pokemonChoice = input.nextInt();
         if (pokemonChoice == 1) {
-            team.add(new Pokemon(1, 60, new Attack[] { new Attack("Thunder Shock", "normal", 10),
+            team.add(new Pokemon(1, 60, new Attack[] { new Attack("Thunder Shock", "electric", 10),
                     new Attack("Quick Attack",  "normal", 40) }));
         } else if (pokemonChoice == 2) {
             team.add(new Pokemon("Squirtle", "water", 1, 60, 60,
-                    new Attack[] { new Attack("Bite", "normal", 40), new Attack("Water Gun", "normal", 40) }));
+                    new Attack[] { new Attack("Bite", "normal", 40), new Attack("Water Gun", "water", 40) }));
         } else if (pokemonChoice == 3) {
             team.add(new Pokemon("Charmander", "fire", 1, 60, 60,
-                    new Attack[] { new Attack("Scratch", "normal", 40), new Attack("Ember", "normal", 40) }));
+                    new Attack[] { new Attack("Scratch", "normal", 40), new Attack("Ember", "fire", 40) }));
         }
         Trainer user = new Trainer(name, team);
 
@@ -54,10 +54,21 @@ public class Game {
                 gymLeader.addPokemon(new Pokemon("Onix", "rock", 1, 60, 60, new Attack[] {
                         new Attack("Rock Throw", "normal", 40), new Attack("Rock Slide", "normal", 40) }));
                 if (gymLeaderChoice == 2) {
+                    gymLeader = new GymLeader("Misty", new ArrayList<Pokemon>(), "Misty's Token of Admiration");
+                    gymLeader.addPokemon(new Pokemon("Geodude", "rock", 1, 60, 60, new Attack[] {
+                            new Attack("Rock Throw", "normal", 40), new Attack("Rock Slide", "normal", 40) }));
+                    gymLeader.addPokemon(new Pokemon("Onix", "rock", 1, 60, 60, new Attack[] {
+                            new Attack("Rock Throw", "normal", 40), new Attack("Rock Slide", "normal", 40) }));
                 } else if (gymLeaderChoice == 3) {
+                    gymLeader = new GymLeader("Lt. Surge", new ArrayList<Pokemon>(), "Lt. Surge's Token of Admiration");
+                    gymLeader.addPokemon(new Pokemon("Geodude", "rock", 1, 60, 60, new Attack[] {
+                            new Attack("Rock Throw", "normal", 40), new Attack("Rock Slide", "normal", 40) }));
+                    gymLeader.addPokemon(new Pokemon("Onix", "rock", 1, 60, 60, new Attack[] {
+                            new Attack("Rock Throw", "normal", 40), new Attack("Rock Slide", "normal", 40) }));
                 }
                 if (battle(user, gymLeader)) {
                     System.out.println("You got " + gymLeader.getName() + "'s badge!");
+                    purse += 100;
                     badges.add(gymLeader.getBadge());
                 }
             } else if (choice == 2) {
@@ -68,15 +79,15 @@ public class Game {
                 int trainerChoice = input.nextInt();
                 Trainer trainer = new Trainer("James", new ArrayList<Pokemon>());
                 trainer.addPokemon(new Pokemon("Pikachu", "electric", 1, 60, 60, new Attack[] {
-                        new Attack("Thunder Shock", "normal", 40), new Attack("Quick Attack", "normal", 40) }));
+                        new Attack("Thunder Shock", "electric", 40), new Attack("Quick Attack", "normal", 40) }));
                 if (trainerChoice == 2) {
                     trainer = new Trainer("John", new ArrayList<Pokemon>());
                     trainer.addPokemon(new Pokemon("Squirtle", "water", 1, 60, 60,
-                            new Attack[] { new Attack("Bite", "normal", 40), new Attack("Water Gun", "normal", 40) }));
+                            new Attack[] { new Attack("Bite", "normal", 40), new Attack("Water Gun", "water", 40) }));
                 } else if (trainerChoice == 3) {
                     trainer = new Trainer("Bug Catcher", new ArrayList<Pokemon>());
                     trainer.addPokemon(new Pokemon("Metapod", "bug", 1, 60, 60, new Attack[] {
-                            new Attack("Bug Bite", "poison", 10), new Attack("Horn Attack", "normal", 40) }));
+                            new Attack("Bug Bite", "grass", 10), new Attack("Horn Attack", "normal", 40) }));
                 }
                 if (battle(user, trainer)) {
                     purse += 100;
@@ -85,8 +96,8 @@ public class Game {
                 System.out.println("You go into the wild!");
                 Pokemon[] wildPokemonList = new Pokemon[] {
                         new Pokemon("Bugman", "water", "wild", 1, 60, 60,
-                                new Attack[] { new Attack("Bite", "poison", 5),
-                                        new Attack("Water Gun", "normal", 20 ) })};
+                                new Attack[] { new Attack("Bite", "normal", 5),
+                                        new Attack("Water Gun", "water", 20 ) })};
                 int rand = (int) (Math.random() * wildPokemonList.length);
                 Trainer wildPokemon = new Trainer(wildPokemonList[rand].getName(), new ArrayList<Pokemon>());
                 wildPokemon.addPokemon(wildPokemonList[rand]);
@@ -184,14 +195,7 @@ public class Game {
                 Pokemon userPokemon = user.getTeam().get(pokemonChoice - 1);
 
                 enemyPokemon = trainer.getTeam().get(0);
-                if(!trainer.getTeam().get(0).getCatchType().equals("wild")) {
-                    System.out.println("Which pokemon do you want to attack?");
-                    for (int i = 0; i < trainer.getTeam().size(); i++) {
-                        System.out.println((i + 1) + ". " + trainer.getTeam().get(i).getName());
-                    }
-                    int enemyPokemonChoice = input.nextInt();
-                    enemyPokemon = trainer.getTeam().get(enemyPokemonChoice - 1);
-                }
+                System.out.println("You attacked " + enemyPokemon.getName() + "!");
                 System.out.println("What attack do you want to use?");
                 for (int i = 0; i < userPokemon.getAttacks().length; i++) {
                     System.out.println((i + 1) + ". " + userPokemon.getAttacks()[i].getName());
@@ -212,8 +216,17 @@ public class Game {
                         poisonCounter = 0;
                     }
                 }
-                if (enemyPokemon.getCurrentHealth() <= 0) {
+                if (enemyPokemon.getCurrentHealth() <= 0 && trainer.getTeam().size() > 1) {
+                    System.out.println("The enemy pokemon has fainted!");
+                    trainer.getTeam().remove(0);
+                    enemyPokemon = trainer.getTeam().get(0);
+                    System.out.println("The enemy trainer sent out " + enemyPokemon.getName() + "!");
+                }
+                if (trainer.isOutOfPokemon()) {
                     System.out.println("You won the battle!");
+                    break;
+                } else if (user.isOutOfPokemon()) {
+                    System.out.println("You lost the battle!");
                     break;
                 } else {
                     System.out.println("The enemy has " + enemyPokemon.getCurrentHealth() + " health left.");
@@ -234,6 +247,18 @@ public class Game {
                             userPokemon.setStatus("Healthy");
                             poisonCounter = 0;
                         }
+                    } if (userPokemon.getCurrentHealth() <= 0 && !user.isOutOfPokemon()) {
+                        System.out.println("Your pokemon has fainted!");
+                        user.getTeam().remove(pokemonChoice - 1);
+                        System.out.println("What pokemon do you want to switch to?");
+                        for (int i = 0; i < user.getTeam().size(); i++) {
+                            System.out.println((i + 1) + ". " + user.getTeam().get(i).getName());
+                        }
+                        pokemonChoice = input.nextInt();
+                        userPokemon = user.getTeam().get(pokemonChoice - 1);
+                    } else if (user.isOutOfPokemon()) {
+                        System.out.println("You lost the battle!");
+                        break;
                     }
                 }
             } else if (choice2 == 2) {
@@ -250,7 +275,7 @@ public class Game {
                 }
                 int itemChoice = input.nextInt();
                 if(bag.get(itemChoice).getName().equals("Pokeball")) {
-                    if(enemyPokemon.getCatchType().equals("normal")) {
+                    if(!enemyPokemon.getCatchType().equals("normal")) {
                         bag.remove(itemChoice);
                         user.getTeam().add(enemyPokemon);
                         System.out.println("You caught " + enemyPokemon.getName() + "!");
