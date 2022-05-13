@@ -267,7 +267,7 @@ public class Game {
                     System.out.println((i + 1) + ". " + user.getTeam().get(i).getName());
                 }
                 pokemonChoice = input.nextInt();
-            } else if (choice2 == 3) {
+            } else if (choice2 == 3 && bag.size() > 1) {
                 itemInUse = true;
                 System.out.println("Which item do you want to use?");
                 for (int i = 1; i < bag.size(); i++) {
