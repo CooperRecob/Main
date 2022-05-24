@@ -1,4 +1,4 @@
-package edu.apcs.finalProject;
+package edu.apcs.pokemonProject;
 
 public class Attack {
     private String name;

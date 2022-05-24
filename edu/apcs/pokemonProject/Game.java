@@ -1,4 +1,4 @@
-package edu.apcs.finalProject;
+package edu.apcs.pokemonProject;
 
 import java.util.ArrayList;
 import java.util.Scanner;
