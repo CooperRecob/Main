@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "apcs"
+		},
+		{
+			"path": "casino"
+		}
+	],
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"type": "java",
+				"name": "Launch Current File",
+				"request": "launch",
+				"mainClass": "${file}"
+			}
+		]
+	},
+	"settings": {
+		"java.project.sourcePaths": [
+			""
+		]
+	}
+}
