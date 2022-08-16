@@ -18,12 +18,20 @@ public class Main {
         int[][] solution = solver.solve();
         if(solution != null){
             System.out.println("Solution found!");
+            //print board with spacers ex. | and -
             for(int i = 0; i < 9; i++){
                 for(int j = 0; j < 9; j++){
                     System.out.print(solution[i][j] + " ");
+                    if(j == 2 || j == 5){
+                        System.out.print("| ");
+                    }
                 }
                 System.out.println();
+                if (i % 3==0){
+                    System.out.println("---------------------");
+                }
             }
+
         } else {
             System.out.println("No solution found!");
         }
