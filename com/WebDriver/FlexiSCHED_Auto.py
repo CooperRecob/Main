@@ -10,7 +10,7 @@ password = file.readline().rstrip()
 file.close()
 
 # inputs the username, password, and classes to be scheduled into the FlexiSCHED website
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(executable_path=r'chromedriver.exe')
 
 driver.get("https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?response_type=code&redirect_uri=https%3A%2F%2Ffortschools.flexisched.net%2FgoogleLogin.php&client_id=418948195496-fvrrvu52kn6rlcvhvn5td7t48i784vmm.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&access_type=online&approval_prompt=auto&flowName=GeneralOAuthFlow")
 
