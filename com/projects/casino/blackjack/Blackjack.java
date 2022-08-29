@@ -1,4 +1,4 @@
-package edu.project.casino.blackjack;
+package com.projects.casino.blackjack;
 
 import java.util.Scanner;
 

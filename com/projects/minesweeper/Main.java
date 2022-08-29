@@ -1,4 +1,4 @@
-package edu.project.minesweeper;
+package com.projects.minesweeper;
 
 import java.util.Scanner;
 

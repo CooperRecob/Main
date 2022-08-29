@@ -1,4 +1,4 @@
-package edu.project.chess;
+package com.projects.chess;
 
 import java.io.FileWriter;
 import java.io.IOException;

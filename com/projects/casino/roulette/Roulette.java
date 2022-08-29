@@ -1,4 +1,4 @@
-package edu.project.casino.roulette;
+package com.projects.casino.roulette;
 
 import java.util.Scanner;
 

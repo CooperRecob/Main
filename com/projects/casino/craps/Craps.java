@@ -1,4 +1,4 @@
-package edu.project.casino.craps;
+package com.projects.casino.craps;
 
 import java.util.Scanner;
 
