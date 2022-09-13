@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+//still need to add sub foods for each food eg. for apple you can have green apple, red apple, etc.
+//still need to add payment and change if cash and no change if card
+//if user doesnt have enough money cancel their order but still count it as an order just not a sale
+
 public class Main {
     public static void main(String[] args) {
         Scanner textInput = new Scanner(System.in);
