@@ -40,7 +40,7 @@ public class Order {
     }
 
     public void addItem(Item item, int quantity) {
-        for (int i = 0; i < quantity; i++) {
+        if (!items.contains(item)) {
             items.add(item);
         }
         itemCount += quantity;
