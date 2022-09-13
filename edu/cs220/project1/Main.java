@@ -10,7 +10,6 @@ public class Main {
         Scanner intinput = new Scanner(System.in);
         boolean ordering = true;
         ArrayList<Order> orders = new ArrayList<Order>();
-        
 
         // Loop so that the user can order multiple times
         while (ordering) {
@@ -20,7 +19,7 @@ public class Main {
 
             // Create a new order
             Order order = new Order(orders.size() + 1, customerName);
-            
+
             // Loop so that the user can add multiple items from a list to the order
             boolean addingItems = true;
             HashMap<Integer, Item> items = new HashMap<Integer, Item>();
@@ -39,7 +38,7 @@ public class Main {
                 int itemNumber = intinput.nextInt();
                 System.out.println("How many would you like to add?");
                 int quantity = intinput.nextInt();
-                
+
                 order.addItem(items.get(itemNumber), quantity);
                 order.getItems().get(index).setQuantity(quantity);
 
@@ -57,7 +56,8 @@ public class Main {
             System.out.println("Items:");
 
             for (int i = 0; i < order.getItems().size(); i++) {
-                System.out.println(order.getItems().get(i).getName() + " x" + order.getItems().get(i).getQuantity() + " $" + (order.getItems().get(i).getPrice() * order.getItems().get(i).getQuantity()));
+                System.out.println(order.getItems().get(i).getName() + " x" + order.getItems().get(i).getQuantity()
+                        + " $" + (order.getItems().get(i).getPrice() * order.getItems().get(i).getQuantity()));
             }
 
             System.out.println("Your Total is $" + order.getTotalPrice());
@@ -72,16 +72,25 @@ public class Main {
                 ordering = false;
             }
         }
-        
+
         // Print all orders
         System.out.println("Total Orders: " + orders.size());
 
+        for (int i = 0; i < orders.size(); i++) {
+            for (int j = 0; j < orders.get(i).getItems().size(); j++) {
+                System.out.println(orders.get(i).getItems().get(j).getName() + " x"
+                        + orders.get(i).getItems().get(j).getQuantity() + " $"
+                        + (orders.get(i).getItems().get(j).getPrice() * orders.get(i).getItems().get(j).getQuantity()));
+            }
+        }
+
         System.out.print("Total Sales: ");
 
-        double totalSales = 0.0;
-        for (Order order : orders) {
-            totalSales += order.getTotalPrice();
+        double totalSales = 0;
+        for (int i = 0; i < orders.size(); i++) {
+            totalSales += orders.get(i).getTotalPrice();
         }
+
         System.out.println("$" + totalSales);
 
         textInput.close();
