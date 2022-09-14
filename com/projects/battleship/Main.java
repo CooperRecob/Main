@@ -1,4 +1,4 @@
-package edu.project.battleship;
+package com.projects.battleship;
 
 public class Main {
     public static void main(String[] args) {

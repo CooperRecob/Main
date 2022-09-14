@@ -1,4 +1,4 @@
-package edu.project.chess;
+package com.projects.chess;
 
 public class Cordinate {
     private int x;

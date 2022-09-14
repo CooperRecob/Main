@@ -1,4 +1,4 @@
-package edu.project.battleship;
+package com.projects.battleship;
 
 public class Board {
      private Ship[][] board;
