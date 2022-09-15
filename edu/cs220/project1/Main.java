@@ -107,7 +107,7 @@ public class Main {
                     System.out.println("Invalid choice");
                 }
 
-                System.out.println("Would you like to add another item to your order? (y/n)");
+                System.out.println("Would you like to add an item to your order? (y/n)");
                 String addAnother = textInput.nextLine();
 
                 if (addAnother.equals("n")) {
@@ -116,7 +116,7 @@ public class Main {
             }
 
             // Print the order
-            System.out.println("Order #" + order.getOrderNumber());
+            System.out.println("------------\nOrder #" + order.getOrderNumber());
             System.out.println("Customer: " + order.getCustomerName());
             System.out.println("Items:");
 
@@ -128,6 +128,7 @@ public class Main {
             double orderTotal = Math.round(order.getTotalPrice() * 100.0) / 100.0;
 
             System.out.println("Your Total is $" + orderTotal);
+            System.out.println("------------");
 
             // Ask the user how they would like to pay
             System.out.println("How would you like to pay?");
@@ -166,6 +167,7 @@ public class Main {
         }
 
         // Print all orders
+        System.out.println("------------");
         System.out.println("Total Orders: " + totalOrders);
         System.out.println("Proccessed Orders:" + orders.size());
 
@@ -205,6 +207,7 @@ public class Main {
         }
 
         System.out.println("$" + Math.round(totalSales * 100.0) / 100.0);
+        System.out.println("------------");
 
         textInput.close();
         intinput.close();
