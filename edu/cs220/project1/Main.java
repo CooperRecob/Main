@@ -151,9 +151,14 @@ public class Main {
                 }
                 ;
             } else if (paymentChoice == 2) {
-                System.out.println("Your card has been charged $" + orderTotal);
-                orders.add(order);
-                totalOrders++;
+                if (Math.random() < 0.9) {
+                    System.out.println("Your card has been declined.");
+                    totalOrders++;
+                } else {
+                    System.out.println("Your card has been accepted. And you have been charged $" + orderTotal);
+                    orders.add(order);
+                    totalOrders++;
+                }
             } else {
                 System.out.println("Invalid choice");
             }
