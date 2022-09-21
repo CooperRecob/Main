@@ -177,7 +177,6 @@ public class Main {
         System.out.println("Proccessed Orders:" + orders.size());
 
         // Combines all orders into one list of items so that all like items are grouped
-
         ArrayList<Item> totalItemsPurchaced = new ArrayList<Item>();
 
         for (int i = 0; i < orders.size(); i++) {
