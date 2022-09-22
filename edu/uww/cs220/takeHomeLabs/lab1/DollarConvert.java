@@ -1,4 +1,4 @@
-package edu.cs220.takeHomeLabs.lab1;
+package edu.uww.cs220.takeHomeLabs.lab1;
 
 import java.util.Scanner;
 

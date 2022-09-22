@@ -1,4 +1,4 @@
-package edu.cs220.project1;
+package edu.uww.cs220.project1;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package edu.cs220.takeHomeLabs.lab2;
+package edu.uww.cs220.takeHomeLabs.lab2;
 
 import javax.swing.JOptionPane;
 
