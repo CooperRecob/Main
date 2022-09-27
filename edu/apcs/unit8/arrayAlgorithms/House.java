@@ -1,4 +1,4 @@
-package edu.apcs.unit8.twodArrayAlgorithms;
+package edu.apcs.unit8.arrayAlgorithms;
 
 public class House {
     private double cost;
