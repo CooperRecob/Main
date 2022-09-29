@@ -1,4 +1,4 @@
-package edu.uww.cs220.project1;
+package project1;
 
 import java.util.ArrayList;
 import java.util.Scanner;

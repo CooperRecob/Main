@@ -1,4 +1,4 @@
-package edu.uww.cs220.practices;
+package practices;
 
 import java.util.Scanner;
 
