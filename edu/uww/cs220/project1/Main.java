@@ -1,22 +1,8 @@
 package edu.uww.cs220.project1;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-/* TODO:
- * System assumptions: customers are allowed to modify their orders by using  the  same  ordering  process  (i.e.,  reorder  everything). 
- * System  assumption:  If customers do not have enough money to make payment, they are allowed to cancel the order, and quit.  
- * Your application should go back to part-1 to accept food ordering from a new customer.
- * 3.1: Your application should also be able to print out a summary report in console as well as 
- * in a text file when no more order will be taken (e.g., at the end of the day, when fast food restaurant
- * closes).  System assumption: no time dimension will be considered in this project such as when to 
- * start the application, when to end the application, how long it takes to process each order etc. 
- * 3.2: The summary report will include: (1) number of orders taken (e.g., total: 10 orders), (2) 
- * number of orders processed (e.g., 9 orders were processed), (3) number orders cancelled if have any 
- * (e.g., 1 order got cancelled), (4) total money amount of all orders (e.g., total amount: $458.67), and 
- * (5) food ordering statistics: how many each type of food ordered (e.g., burgers: 4 chicken, 10 beef, 
- * 3 fish; fries: 6 medium, 3 large, 4 small; drinks: 10 soda, 8 coffee, 3 juice).
- */
 
 public class Main {
     public static void main(String[] args) {
@@ -145,44 +131,51 @@ public class Main {
             System.out.println("Your Total is $" + orderTotal);
             System.out.println("------------");
 
-            // Ask the user how they would like to pay
-            System.out.println("How would you like to pay?");
-            System.out.println("1. Cash");
-            System.out.println("2. Card");
+            // Ask user if this order is correct
+            System.out.println("Is this order correct? (y/n)");
+            String correct = textInput.nextLine();
 
-            int paymentChoice = intinput.nextInt();
+            if (correct.equals("y")) {
 
-            if (paymentChoice == 1) {
-                System.out.println("How much cash are you paying with?");
-                double cash = intinput.nextDouble();
+                // Ask the user how they would like to pay
+                System.out.println("How would you like to pay?");
+                System.out.println("1. Cash");
+                System.out.println("2. Card");
 
-                if (cash < orderTotal) {
-                    System.out.println("You do not have enough money to pay for this order.");
-                    totalOrders++;
+                int paymentChoice = intinput.nextInt();
+
+                if (paymentChoice == 1) {
+                    System.out.println("How much cash are you paying with?");
+                    double cash = intinput.nextDouble();
+
+                    if (cash < orderTotal) {
+                        System.out.println("You do not have enough money to pay for this order.");
+                        totalOrders++;
+                    } else {
+                        System.out.println("Your change is $" + Math.round((cash - orderTotal) * 100.0) / 100.0);
+                        orders.add(order);
+                        totalOrders++;
+                    }
+                    ;
+                } else if (paymentChoice == 2) {
+                    if (Math.random() < 0.9) {
+                        System.out.println("Your card has been declined.");
+                        totalOrders++;
+                    } else {
+                        System.out.println("Your card has been accepted. And you have been charged $" + orderTotal);
+                        orders.add(order);
+                        totalOrders++;
+                    }
                 } else {
-                    System.out.println("Your change is $" + Math.round((cash - orderTotal) * 100.0) / 100.0);
-                    orders.add(order);
-                    totalOrders++;
+                    System.out.println("Invalid choice");
                 }
-                ;
-            } else if (paymentChoice == 2) {
-                if (Math.random() < 0.9) {
-                    System.out.println("Your card has been declined.");
-                    totalOrders++;
-                } else {
-                    System.out.println("Your card has been accepted. And you have been charged $" + orderTotal);
-                    orders.add(order);
-                    totalOrders++;
-                }
-            } else {
-                System.out.println("Invalid choice");
-            }
 
-            // Ask the user if they would like to order again
-            System.out.println("\nWould you like to order again? (y/n)");
-            String response = textInput.nextLine();
-            if (response.equals("n")) {
-                ordering = false;
+                // Ask the user if they would like to order again
+                System.out.println("\nWould you like to order again? (y/n)");
+                String response = textInput.nextLine();
+                if (response.equals("n")) {
+                    ordering = false;
+                }
             }
         }
 
@@ -190,6 +183,7 @@ public class Main {
         System.out.println("------------");
         System.out.println("Total Orders: " + totalOrders);
         System.out.println("Proccessed Orders:" + orders.size());
+        System.out.println("Cancelled Orders: " + (totalOrders - orders.size()));
 
         // Combines all orders into one list of items so that all like items are grouped
         ArrayList<Item> totalItemsPurchaced = new ArrayList<Item>();
@@ -228,6 +222,32 @@ public class Main {
 
         System.out.println("$" + Math.round(totalSales * 100.0) / 100.0);
         System.out.println("------------");
+
+        // Print this to a text file
+        try {
+            PrintWriter writer = new PrintWriter("orders.txt", "UTF-8");
+
+            writer.println("------------");
+            writer.println("Total Orders: " + totalOrders);
+            writer.println("Proccessed Orders:" + orders.size());
+            writer.println("Cancelled Orders: " + (totalOrders - orders.size()));
+
+            writer.println("Total Items Purchased:");
+
+            for (int i = 0; i < totalItemsPurchaced.size(); i++) {
+                writer.println(totalItemsPurchaced.get(i).getName() + " x" + totalItemsPurchaced.get(i).getQuantity()
+                        + " - $" + Math.round(totalItemsPurchaced.get(i).getPrice() * 100.0) / 100.0);
+            }
+
+            writer.print("Total Sales: ");
+
+            writer.println("$" + Math.round(totalSales * 100.0) / 100.0);
+            writer.println("------------");
+
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Error writing to file");
+        }
 
         textInput.close();
         intinput.close();
