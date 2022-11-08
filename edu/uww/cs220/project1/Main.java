@@ -1,5 +1,6 @@
 package edu.uww.cs220.project1;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -130,44 +131,51 @@ public class Main {
             System.out.println("Your Total is $" + orderTotal);
             System.out.println("------------");
 
-            // Ask the user how they would like to pay
-            System.out.println("How would you like to pay?");
-            System.out.println("1. Cash");
-            System.out.println("2. Card");
+            // Ask user if this order is correct
+            System.out.println("Is this order correct? (y/n)");
+            String correct = textInput.nextLine();
 
-            int paymentChoice = intinput.nextInt();
+            if (correct.equals("y")) {
 
-            if (paymentChoice == 1) {
-                System.out.println("How much cash are you paying with?");
-                double cash = intinput.nextDouble();
+                // Ask the user how they would like to pay
+                System.out.println("How would you like to pay?");
+                System.out.println("1. Cash");
+                System.out.println("2. Card");
 
-                if (cash < orderTotal) {
-                    System.out.println("You do not have enough money to pay for this order.");
-                    totalOrders++;
+                int paymentChoice = intinput.nextInt();
+
+                if (paymentChoice == 1) {
+                    System.out.println("How much cash are you paying with?");
+                    double cash = intinput.nextDouble();
+
+                    if (cash < orderTotal) {
+                        System.out.println("You do not have enough money to pay for this order.");
+                        totalOrders++;
+                    } else {
+                        System.out.println("Your change is $" + Math.round((cash - orderTotal) * 100.0) / 100.0);
+                        orders.add(order);
+                        totalOrders++;
+                    }
+                    ;
+                } else if (paymentChoice == 2) {
+                    if (Math.random() < 0.9) {
+                        System.out.println("Your card has been declined.");
+                        totalOrders++;
+                    } else {
+                        System.out.println("Your card has been accepted. And you have been charged $" + orderTotal);
+                        orders.add(order);
+                        totalOrders++;
+                    }
                 } else {
-                    System.out.println("Your change is $" + Math.round((cash - orderTotal) * 100.0) / 100.0);
-                    orders.add(order);
-                    totalOrders++;
+                    System.out.println("Invalid choice");
                 }
-                ;
-            } else if (paymentChoice == 2) {
-                if (Math.random() < 0.9) {
-                    System.out.println("Your card has been declined.");
-                    totalOrders++;
-                } else {
-                    System.out.println("Your card has been accepted. And you have been charged $" + orderTotal);
-                    orders.add(order);
-                    totalOrders++;
-                }
-            } else {
-                System.out.println("Invalid choice");
-            }
 
-            // Ask the user if they would like to order again
-            System.out.println("\nWould you like to order again? (y/n)");
-            String response = textInput.nextLine();
-            if (response.equals("n")) {
-                ordering = false;
+                // Ask the user if they would like to order again
+                System.out.println("\nWould you like to order again? (y/n)");
+                String response = textInput.nextLine();
+                if (response.equals("n")) {
+                    ordering = false;
+                }
             }
         }
 
@@ -175,6 +183,7 @@ public class Main {
         System.out.println("------------");
         System.out.println("Total Orders: " + totalOrders);
         System.out.println("Proccessed Orders:" + orders.size());
+        System.out.println("Cancelled Orders: " + (totalOrders - orders.size()));
 
         // Combines all orders into one list of items so that all like items are grouped
         ArrayList<Item> totalItemsPurchaced = new ArrayList<Item>();
@@ -184,7 +193,8 @@ public class Main {
                 boolean found = false;
                 for (int k = 0; k < totalItemsPurchaced.size(); k++) {
                     if (orders.get(i).getItems().get(j).getName().equals(totalItemsPurchaced.get(k).getName())) {
-                        totalItemsPurchaced.get(k).setQuantity(totalItemsPurchaced.get(k).getQuantity() + orders.get(i).getItems().get(j).getQuantity());
+                        totalItemsPurchaced.get(k).setQuantity(totalItemsPurchaced.get(k).getQuantity()
+                                + orders.get(i).getItems().get(j).getQuantity());
                         found = true;
                     }
                 }
@@ -199,9 +209,9 @@ public class Main {
         System.out.println("Total Items Purchased:");
 
         for (int i = 0; i < totalItemsPurchaced.size(); i++) {
-            System.out.println(totalItemsPurchaced.get(i).getName() + " x" + totalItemsPurchaced.get(i).getQuantity() + " - $" + Math.round(totalItemsPurchaced.get(i).getPrice() * 100.0) / 100.0);
+            System.out.println(totalItemsPurchaced.get(i).getName() + " x" + totalItemsPurchaced.get(i).getQuantity()
+                    + " - $" + Math.round(totalItemsPurchaced.get(i).getPrice() * 100.0) / 100.0);
         }
-
 
         System.out.print("Total Sales: ");
 
@@ -212,6 +222,32 @@ public class Main {
 
         System.out.println("$" + Math.round(totalSales * 100.0) / 100.0);
         System.out.println("------------");
+
+        // Print this to a text file
+        try {
+            PrintWriter writer = new PrintWriter("orders.txt", "UTF-8");
+
+            writer.println("------------");
+            writer.println("Total Orders: " + totalOrders);
+            writer.println("Proccessed Orders:" + orders.size());
+            writer.println("Cancelled Orders: " + (totalOrders - orders.size()));
+
+            writer.println("Total Items Purchased:");
+
+            for (int i = 0; i < totalItemsPurchaced.size(); i++) {
+                writer.println(totalItemsPurchaced.get(i).getName() + " x" + totalItemsPurchaced.get(i).getQuantity()
+                        + " - $" + Math.round(totalItemsPurchaced.get(i).getPrice() * 100.0) / 100.0);
+            }
+
+            writer.print("Total Sales: ");
+
+            writer.println("$" + Math.round(totalSales * 100.0) / 100.0);
+            writer.println("------------");
+
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Error writing to file");
+        }
 
         textInput.close();
         intinput.close();
