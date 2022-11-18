@@ -97,12 +97,12 @@ public class Main {
                         System.out.println("How many medium drinks would you like?");
                         int drinkAmount = intinput.nextInt();
 
-                        order.addItem(new Item("Medium Drink", 2.99), drinkAmount);
+                        order.addItem(new Item("Medium Drink", 2.49), drinkAmount);
                     } else if (drinkChoice == 3) {
                         System.out.println("How many large drinks would you like?");
                         int drinkAmount = intinput.nextInt();
 
-                        order.addItem(new Item("Large Drink", 3.99), drinkAmount);
+                        order.addItem(new Item("Large Drink", 2.99), drinkAmount);
                     }
                 } else {
                     System.out.println("Invalid choice");
@@ -158,14 +158,9 @@ public class Main {
                     }
                     ;
                 } else if (paymentChoice == 2) {
-                    if (Math.random() < 0.9) {
-                        System.out.println("Your card has been declined.");
-                        totalOrders++;
-                    } else {
-                        System.out.println("Your card has been accepted. And you have been charged $" + orderTotal);
-                        orders.add(order);
-                        totalOrders++;
-                    }
+                    System.out.println("You have been charged $" + orderTotal);
+                    orders.add(order);
+                    totalOrders++;
                 } else {
                     System.out.println("Invalid choice");
                 }
@@ -227,7 +222,6 @@ public class Main {
         try {
             PrintWriter writer = new PrintWriter("orders.txt", "UTF-8");
 
-            writer.println("------------");
             writer.println("Total Orders: " + totalOrders);
             writer.println("Proccessed Orders:" + orders.size());
             writer.println("Cancelled Orders: " + (totalOrders - orders.size()));
@@ -242,8 +236,6 @@ public class Main {
             writer.print("Total Sales: ");
 
             writer.println("$" + Math.round(totalSales * 100.0) / 100.0);
-            writer.println("------------");
-
             writer.close();
         } catch (Exception e) {
             System.out.println("Error writing to file");
