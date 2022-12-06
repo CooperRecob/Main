@@ -1,1 +1,13 @@
 spoon
+chalk
+board
+eraser
+pencil
+pen
+paper
+scissors
+ruler
+book
+bag
+backpack
+hangman
