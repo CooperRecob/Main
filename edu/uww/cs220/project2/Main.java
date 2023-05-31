@@ -87,6 +87,8 @@ public class Main {
                     System.out.println(theWordToGuess);
                 }
             }
+            file.close();
+            input.close();
         } catch (IOException InputMismatchException) { // catches if the file is not found
             System.out.println("Please input a letter");
         }
