@@ -7,6 +7,7 @@ import javax.swing.*;
 public class Main {
     static String[][] map = new String[15][15];
     static String selectedType = "shgs";
+
     public static void main(String[] args) {
         // this jframe will be a pokemon map creator that will allow you to make a map
         // and save it to a file
@@ -94,27 +95,23 @@ public class Main {
                 int finalX = x;
                 int finalY = y;
                 buttons[x][y].addActionListener(e -> {
-                    if (map[finalX][finalY] == null) {
-                        map[finalX][finalY] = selectedType;
-                        //switch case
-                        switch (selectedType) {
-                            case "lggs":
-                                buttons[finalX][finalY].setBackground(Color.GREEN.darker());
-                                break;
-                            case "shgs":
-                                buttons[finalX][finalY].setBackground(Color.GREEN);
-                                break;
-                            case "path":
-                                buttons[finalX][finalY].setBackground(Color.GRAY);
-                                break;
-                            case "logs":
-                                buttons[finalX][finalY].setBackground(Color.BLACK);
-                                break;
-                        }
-                    } else {
-                        map[finalX][finalY] = null;
-                        buttons[finalX][finalY].setBackground(null);
+                    map[finalX][finalY] = selectedType;
+                    // switch case
+                    switch (selectedType) {
+                        case "lggs":
+                            buttons[finalX][finalY].setBackground(Color.GREEN.darker());
+                            break;
+                        case "shgs":
+                            buttons[finalX][finalY].setBackground(Color.GREEN);
+                            break;
+                        case "path":
+                            buttons[finalX][finalY].setBackground(Color.ORANGE.darker());
+                            break;
+                        case "logs":
+                            buttons[finalX][finalY].setBackground(Color.BLACK);
+                            break;
                     }
+
                 });
             }
         }
@@ -130,7 +127,7 @@ public class Main {
             for (int x = 0; x < 15; x++) {
                 for (int y = 0; y < 15; y++) {
                     if (map[x][y] != null) {
-                        //switch case
+                        // switch case
                         switch (map[x][y]) {
                             case "lggs":
                                 buttons[x][y].setBackground(Color.GREEN.darker());
@@ -139,7 +136,7 @@ public class Main {
                                 buttons[x][y].setBackground(Color.GREEN);
                                 break;
                             case "path":
-                                buttons[x][y].setBackground(Color.GRAY);
+                                buttons[x][y].setBackground(Color.ORANGE.darker());
                                 break;
                             case "logs":
                                 buttons[x][y].setBackground(Color.BLACK);
@@ -157,7 +154,7 @@ public class Main {
             for (int x = 0; x < 15; x++) {
                 for (int y = 0; y < 15; y++) {
                     if (map[x][y] != null) {
-                        //switch case
+                        // switch case
                         switch (map[x][y]) {
                             case "lggs":
                                 buttons[x][y].setBackground(Color.GREEN.darker());
@@ -166,7 +163,7 @@ public class Main {
                                 buttons[x][y].setBackground(Color.GREEN);
                                 break;
                             case "path":
-                                buttons[x][y].setBackground(Color.GRAY);
+                                buttons[x][y].setBackground(Color.ORANGE.darker());
                                 break;
                             case "logs":
                                 buttons[x][y].setBackground(Color.BLACK);

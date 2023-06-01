@@ -24,7 +24,47 @@ public class MapGen {
                 map[x][y] = "shgs";
             }
         }
-        // file the edges with trees
+
+        // make patches of long grass that vary in size
+
+        // make a random number of patches of long grass
+        int numberOfPatches = (int) (Math.random() * 5) + 1;
+
+        // make a random starting point for each patch of long grass and make a random size for each patch of long grass
+        int[] patchSizes = new int[numberOfPatches];
+        int[][] patchMap = new int[15][15];
+        
+        for (int i = 0; i < numberOfPatches; i++) {
+            int rand = (int) (Math.random() * 3) + 1;
+            patchSizes[i] = rand;
+
+            int x = (int) (Math.random() * 15);
+            int y = (int) (Math.random() * 15);
+            patchMap[x][y] = 1;
+        }
+
+        // make the patches of long grass a circle with a radius of the random size aroud all the starting point
+        // make sure no index out of bounds
+        for (int col = 0; col < 15; col++) {
+            for (int row = 0; row < 15; row++) {
+                for (int i = 0; i < numberOfPatches; i++) {
+                    if (patchMap[col][row] == 1) {
+                        // make a circle around the point
+                        for (int x = col - patchSizes[i]; x < col + patchSizes[i]; x++) {
+                            for (int y = row - patchSizes[i]; y < row + patchSizes[i]; y++) {
+                                // make sure no index out of bounds
+                                if (x >= 0 && x < 15 && y >= 0 && y < 15) {
+                                    map[x][y] = "lggs";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+
+        // line the edges with trees
         for (int x = 0; x < 15; x++) {
             map[x][0] = "logs";
             map[x][14] = "logs";
@@ -33,11 +73,6 @@ public class MapGen {
             map[0][y] = "logs";
             map[14][y] = "logs";
         }
-
-        // make the path using these rules:
-        // 1. the path must be at least 3 tiles wide
-        // 2. you must be able to get from one side of the map to the other either top
-        // to bottom or left to right
 
         // make the path start at a random edge
         int startingEdge = (int) (Math.random() * 2);
@@ -61,11 +96,6 @@ public class MapGen {
                 map[startingValue + 2][y] = "path";
             }
         }
-
-        //make patches of long grass
-        
-
-
 
         // return the map
         return map;

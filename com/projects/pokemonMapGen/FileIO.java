@@ -11,7 +11,7 @@ public class FileIO {
             PrintWriter pw = new PrintWriter(new File(name + ".txt"));
             for (int x = 0; x < 15; x++) {
                 for (int y = 0; y < 15; y++) {
-                    pw.print(map[x][y] + " ");
+                    pw.print(map[y][x] + " ");
                 }
                 pw.println();
             }
