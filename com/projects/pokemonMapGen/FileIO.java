@@ -7,11 +7,15 @@ import java.util.Scanner;
 public class FileIO {
     //save map to txt file using saveMap method since map is a 2d array of strings just save it in the file as each column of the array seperated by a space and each row seperated by a new line
     public static void saveMap(String[][] map, String name) {
+        //delete all data in old file first
+        File file = new File(name + ".txt");
+        file.delete();
+
         try {
             PrintWriter pw = new PrintWriter(new File(name + ".txt"));
             for (int x = 0; x < 15; x++) {
                 for (int y = 0; y < 15; y++) {
-                    pw.print(map[y][x] + " ");
+                    pw.print(map[x][y] + " ");
                 }
                 pw.println();
             }

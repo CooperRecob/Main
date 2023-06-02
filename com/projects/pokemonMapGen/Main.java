@@ -28,8 +28,7 @@ public class Main {
 
         JFrame frame = new JFrame("Pokemon Map Creator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 800);
-        frame.setVisible(true);
+        frame.setSize(850, 700);
 
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -46,31 +45,31 @@ public class Main {
         }
 
         JButton lGrass = new JButton("Long Grass");
-        lGrass.setBounds(600, 100, 150, 50);
+        lGrass.setBounds(650, 100, 150, 50);
         panel.add(lGrass);
 
         JButton sGrass = new JButton("Short Grass");
-        sGrass.setBounds(600, 160, 150, 50);
+        sGrass.setBounds(650, 160, 150, 50);
         panel.add(sGrass);
 
         JButton path = new JButton("Path");
-        path.setBounds(600, 220, 150, 50);
+        path.setBounds(650, 220, 150, 50);
         panel.add(path);
 
         JButton tree = new JButton("Tree");
-        tree.setBounds(600, 280, 150, 50);
+        tree.setBounds(650, 280, 150, 50);
         panel.add(tree);
 
         JButton save = new JButton("Save");
-        save.setBounds(600, 340, 150, 50);
+        save.setBounds(650, 340, 150, 50);
         panel.add(save);
 
         JButton load = new JButton("Load");
-        load.setBounds(600, 400, 150, 50);
+        load.setBounds(650, 400, 150, 50);
         panel.add(load);
 
         JButton random = new JButton("Random");
-        random.setBounds(600, 460, 150, 50);
+        random.setBounds(650, 460, 150, 50);
         panel.add(random);
 
         lGrass.addActionListener(e -> {
@@ -175,5 +174,8 @@ public class Main {
                 }
             }
         });
+
+        
+        frame.setVisible(true);
     }
 }

@@ -30,10 +30,11 @@ public class MapGen {
         // make a random number of patches of long grass
         int numberOfPatches = (int) (Math.random() * 5) + 1;
 
-        // make a random starting point for each patch of long grass and make a random size for each patch of long grass
+        // make a random starting point for each patch of long grass and make a random
+        // size for each patch of long grass
         int[] patchSizes = new int[numberOfPatches];
         int[][] patchMap = new int[15][15];
-        
+
         for (int i = 0; i < numberOfPatches; i++) {
             int rand = (int) (Math.random() * 3) + 1;
             patchSizes[i] = rand;
@@ -43,7 +44,8 @@ public class MapGen {
             patchMap[x][y] = 1;
         }
 
-        // make the patches of long grass a circle with a radius of the random size aroud all the starting point
+        // make the patches of long grass a circle with a radius of the random size
+        // aroud all the starting point
         // make sure no index out of bounds
         for (int col = 0; col < 15; col++) {
             for (int row = 0; row < 15; row++) {
@@ -62,7 +64,6 @@ public class MapGen {
                 }
             }
         }
-        
 
         // line the edges with trees
         for (int x = 0; x < 15; x++) {
@@ -74,26 +75,27 @@ public class MapGen {
             map[14][y] = "logs";
         }
 
-        // make the path start at a random edge
-        int startingEdge = (int) (Math.random() * 2);
+        int pathChance = (int) (Math.random() * 2);
 
-        // make the path start at a value between 2 and 9
-        int startingValue = (int) (Math.random() * 7) + 2;
+        if (pathChance == 1) {
+            // make the path start at a random edge
+            int startingEdge = (int) (Math.random() * 2);
 
-        // make the path start at a random edge
-        if (startingEdge == 0) {
-            // start at the top
-            for (int x = 0; x < 15; x++) {
-                map[x][startingValue] = "path";
-                map[x][startingValue + 1] = "path";
-                map[x][startingValue + 2] = "path";
-            }
-        } else {
-            // start at the left
-            for (int y = 0; y < 15; y++) {
-                map[startingValue][y] = "path";
-                map[startingValue + 1][y] = "path";
-                map[startingValue + 2][y] = "path";
+            // make the path start at a random edge
+            if (startingEdge == 0) {
+                // start at the top
+                for (int x = 0; x < 15; x++) {
+                    map[x][6] = "path";
+                    map[x][6 + 1] = "path";
+                    map[x][6 + 2] = "path";
+                }
+            } else {
+                // start at the left
+                for (int y = 0; y < 15; y++) {
+                    map[6][y] = "path";
+                    map[6 + 1][y] = "path";
+                    map[6 + 2][y] = "path";
+                }
             }
         }
 
