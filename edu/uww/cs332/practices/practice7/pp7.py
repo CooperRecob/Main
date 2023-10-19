@@ -51,6 +51,6 @@ k = 6  # number of clusters
 Cls = callKmeans(data, k, n, 10)
 for i in np.unique(Cls):
     ind = np.where(Cls == i)
-    plt.scatter(data[ind, 0], data[ind, 1], label=k)
+    plt.scatter(data[ind, 0], data[ind, 1], label=i)
 plt.legend()
 plt.show()
