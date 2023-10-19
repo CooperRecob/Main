@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics.pairwise import euclidean_distances
 
-
 def myKmeans(data, C, n, k, numiter):
     oldC = C
     O=[]
@@ -50,4 +49,8 @@ data = data[:, 0:m-1]
 
 k = 6  # number of clusters
 Cls = callKmeans(data, k, n, 10)
-print(Cls)
+for i in np.unique(Cls):
+    ind = np.where(Cls == i)
+    plt.scatter(data[ind, 0], data[ind, 1], label=k)
+plt.legend()
+plt.show()
