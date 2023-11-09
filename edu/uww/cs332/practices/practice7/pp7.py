@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.metrics import confusion_matrix
 
 def myKmeans(data, C, n, k, numiter):
     oldC = C
@@ -54,3 +55,7 @@ for i in np.unique(Cls):
     plt.scatter(data[ind, 0], data[ind, 1], label=i)
 plt.legend()
 plt.show()
+
+#print confusion matrix
+C = confusion_matrix(label, Cls)
+print(C)
