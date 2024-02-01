@@ -1,0 +1,65 @@
+Create an online order form  for an online computer store and  include the following items:
+
+Drop-down menu for selecting an operating system. Include at least Windows and  Linux as the options.
+Drop-down menu for selecting a processor. Include Intel Core i5, Intel Core i7, and AMD Ryzen as the options. Intel Core i5 should be the default value.
+Group of radio buttons for selecting memory. 8 GB should be the default value.
+Checkboxes for selecting accessories, as in the image. These are optional items.
+Text elements for entering name and email address.
+Text area to enter comments.
+submit button to send form data to a server and cancel button to clear the selections
+Note: the submit button is just to create a complete form. You do not have to define the form action attribute for this assignment.
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheets.css">
+    <title>Online Order Form</title>
+  </head>
+  <body>
+    <h1>Online Order Form</h1>
+    <form action="">
+      <label for="os">Operating System:</label>
+      <select id="os" name="os">
+        <option value="Windows">Windows</option>
+        <option value="Linux">Linux</option>
+      </select>
+      <br />
+      <label for="processor">Processor:</label>
+      <select id="processor" name="processor">
+        <option value="i5">Intel Core i5</option>
+        <option value="i7">Intel Core i7</option>
+        <option value="ryzen">AMD Ryzen</option>
+      </select>
+      <br />
+      <label>Memory:</label>
+      <input type="radio" id="8gb" name="memory" value="8gb" checked />
+      <label for="8gb">8 GB</label>
+      <input type="radio" id="16gb" name="memory" value="16gb" />
+      <label for="16gb">16 GB</label>
+      <input type="radio" id="32gb" name="memory" value="32gb" />
+      <label for="32gb">32 GB</label>
+      <br />
+      <label>Accessories:</label>
+      <input type="checkbox" id="monitor" name="monitor" value="monitor" />
+      <label for="monitor">Monitor</label>
+      <input type="checkbox" id="keyboard" name="keyboard" value="keyboard" />
+      <label for="keyboard">Keyboard</label>
+      <input type="checkbox" id="mouse" name="mouse" value="mouse" />
+      <label for="mouse">Mouse</label>
+      <br />
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" />
+      <br />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" />
+      <br />
+      <label for="comments">Comments:</label>
+      <textarea id="comments" name="comments"></textarea>
+      <br />
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Cancel" />
+    </form>
+  </body>
+</html>
