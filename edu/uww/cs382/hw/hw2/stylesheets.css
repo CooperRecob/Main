@@ -1,5 +1,10 @@
-#os, #processor, #memory, #accessories {
-    border: 1px solid black;
+#top, #bottom {
+    background-color: #f0f0f0;
     padding: 10px;
+    border: 1px solid #000;
     margin: 10px;
+    text-align: center;
+}
+h1 {
+    text-align: center;
 }

@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="stylesheets.css">
-    <title>Online Order Form</title>
-  </head>
-  <body>
-    <h1>Online Order Form</h1>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="stylesheets.css">
+  <title>Online Order Form</title>
+</head>
+
+<body>
+  <h1>Online Order Form</h1>
+  <div id="top">
     <form action="">
       <label for="os">Operating System:</label>
       <select id="os" name="os">
         <option value="Windows">Windows</option>
         <option value="Linux">Linux</option>
+        <option value="Mac">Mac</option>
       </select>
-      <br/>
+      <br />
       <label for="processor">Processor:</label>
       <select id="processor" name="processor">
         <option value="i5">Intel Core i5</option>
         <option value="i7">Intel Core i7</option>
         <option value="ryzen">AMD Ryzen</option>
       </select>
-      <br/>
+      <br />
       <label>Memory:</label>
       <input type="radio" id="8gb" name="memory" value="8gb" checked />
       <label for="8gb">8 GB</label>
@@ -29,7 +33,19 @@
       <label for="16gb">16 GB</label>
       <input type="radio" id="32gb" name="memory" value="32gb" />
       <label for="32gb">32 GB</label>
-      <br/>
+      <br />
+      <label>Hard Drive:</label>
+      <select id="driveType" name="driveType">
+        <option value="HDD">HDD</option>
+        <option value="SSD">SSD</option>
+      </select>
+      <input type="radio" id="256gb" name="storage" value="256gb" checked />
+      <label for="256gb">256 GB</label>
+      <input type="radio" id="512gb" name="storage" value="512gb" />
+      <label for="512gb">512 GB</label>
+      <input type="radio" id="1tb" name="storage" value="1tb" />
+      <label for="1tb">1 TB</label>
+      <br />
       <label>Accessories:</label>
       <input type="checkbox" id="monitor" name="monitor" value="monitor" />
       <label for="monitor">Monitor</label>
@@ -37,18 +53,22 @@
       <label for="keyboard">Keyboard</label>
       <input type="checkbox" id="mouse" name="mouse" value="mouse" />
       <label for="mouse">Mouse</label>
-      <br/>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" />
-      <br/>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" />
-      <br/>
-      <label for="comments">Comments:</label>
-      <textarea id="comments" name="comments"></textarea>
-      <br/>
-      <input type="submit" value="Submit" />
-      <input type="reset" value="Cancel" />
+  </div>
+  <br />
+  <div id="bottom">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" />
+    <br />
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" />
+    <br />
+    <label for="comments">Comments:</label>
+    <textarea id="comments" name="comments"></textarea>
+    <br />
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Cancel" />
     </form>
-  </body>
+  </div>
+</body>
+
 </html>
