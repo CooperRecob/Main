@@ -48,7 +48,7 @@
         MAGD,150,1,M,14:00 15:15,Leighton,Fred Vichot,HE0101
         where it goes subject, course, section, day, time, teacher last name, teacher first name, location
     */
-    $file = fopen("/workspaces/Main/edu/uww/cs382/hw/displayCourseSchedule/spring24schedule.txt", "r") or die("Unable to open file!");
+    $file = fopen("spring24schedule.txt", "r") or die("Unable to open file!");
     $data = array();
 
     // make a class for the data
