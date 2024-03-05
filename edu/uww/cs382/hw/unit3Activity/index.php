@@ -91,43 +91,32 @@
     </form>
 
     <?php
-    /*Create a PHP script  that does the following:
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $milkchocolate = $_POST['milkchocolate'];
+        $assortedfine = $_POST['assortedfine'];
+        $assortedmilk = $_POST['assortedmilk'];
 
-    1. Read the input data into appropriate variables and validate the data
+        if ($milkchocolate < 0 || $milkchocolate > 10 || $assortedfine < 0 || $assortedfine > 10 || $assortedmilk < 0 || $assortedmilk > 10) {
+            echo "Please enter a valid quantity between 0 and 10";
+        } else {
+            $cost_milkchocolate = 2.90;
+            $cost_assortedfine = 4.59;
+            $cost_assortedmilk = 5.25;
 
-    2. Calculate and display the quantity of each product, total cost, the total number of items, 5% taxes, and the total amount (total cost + taxes):
+            $total_cost = ($cost_milkchocolate * $milkchocolate) + ($cost_assortedfine * $assortedfine) + ($cost_assortedmilk * $assortedmilk);
+            $total_items = $milkchocolate + $assortedfine + $assortedmilk;
+            $taxes = round($total_cost * 0.05, 2);
+            $total_amount = $total_cost + $taxes;
 
-    Use the following values:
-    cost of milk chocolate: $2.90
-    cost of assorted fine chocolate: $4.59,
-    cost of assorted milk and dark chocolate: $5.25.
-
-    Total cost = (cost of milk chocolate)  *  (milk chocolate quantity)
-    +  (cost of assorted fine chocolate) * (assorted fine chocolate quantity )
-    +  (cost of assorted milk and dark chocolate) *  (assorted milk and dark chocolate quantity)
-
-    Requirement:
-    Each quantity should be an integer between 0 and 10.
-
-    Display an appropriate error message if the input values are invalid.
-    If the input values are valid, then calculate and display the output.
-
-    Sample Output:
-    Number of milk chocolates: 6
-    Number of  assorted fine chocolates: 5
-    Number of assorted milk and dark chocolates: 10
-    Total number of items: 21
-    Total cost: $92.85
-    5% Taxes: $4.64
-    Total amount: $97.49
-
-    You may use the PHP round(variable, precision)  method to round values to two decimal places ( e.g. round($amount, 2))
-
-    Note: you may use the postback method and include both HTML and PHP codes in a single .php file.
-    */
-
-        
-
+            echo "Number of milk chocolates: $milkchocolate <br>";
+            echo "Number of  assorted fine chocolates: $assortedfine <br>";
+            echo "Number of assorted milk and dark chocolates: $assortedmilk <br>";
+            echo "Total number of items: $total_items <br>";
+            echo "Total cost: $$total_cost <br>";
+            echo "5% Taxes: $$taxes <br>";
+            echo "Total amount: $$total_amount <br>";
+        }
+    }
     ?>
 
 </body>
