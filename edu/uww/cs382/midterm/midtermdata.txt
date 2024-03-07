@@ -1,0 +1,30 @@
+101,HDTV,LG 75in LED HDTV,1729.99
+102,HDTV,Sony 77in Bravia XR A80J OLED 4K UHD Smart TV,2499.99
+103,Cellphone,Apple iPhone XR,399.99
+104,Cellphone,Samsung Galaxy S21,799.99
+105,Cellphone,LG 5G LMF100TM,649.99
+106,Computer,Alienware Aurora R16 Gaming Desktop,2299.99
+107,Computer,Alienware x16 Gaming Laptop,2499.99
+108,Computer,Dell XPS Desktop,1699.99
+109,HDTV,Samsung 85in UHD Smart TV,1699.99
+110,Cellphone,iPhone 13,829.99
+111,Computer,Apple MacBook Pro,1699.99
+112,Electronic,Audio Technica ATH-M50x,149.99
+113,Electronic,Sennheiser Urbanite XL,89.99
+114,Electronic,Philips FX10 Bluetooth Stereo System,199.99
+115,Electronic,Samsung HW-S40T 2.0 ch All-in-One Soundbarelectron,137.99
+116,Electronic,M-Audio Bass Traveler,56.99
+117,Video-game,Battlefield 1,59.99
+118,Video-game,Overwatch,40.99
+119,Video-game,Gears of War 5,59.99
+120,Video-game,Titanfall 2,59.99
+121,Video-game,Sid Meiers Civilization VI ,59.99
+122,Video-game,The Sims 4,39.99
+123,Video-game,Grand Theft Auto V,59.99
+124,Computer,Inspiron 15 Laptop,379.99
+125,Computer,XPS 15 Laptop,1099.00
+126,Electronic,Alienware 27 Gaming Monitor AW2724DM,329.99
+127,Electronic,Dell 32 4K UHD Gaming Monitor - G3223Q,599.99
+128,Electronic,Dell Thunderbolt Dock - WD22TB4,277.99
+129,Electronic,Microsoft Xbox Game Console,449.99
+130,Electronic,Dell Docking Station,599.99
