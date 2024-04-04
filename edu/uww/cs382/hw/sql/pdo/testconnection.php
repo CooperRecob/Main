@@ -17,4 +17,3 @@ foreach ($movies as $row) {
 echo "</table>";
 // close the db connection
 $db = null;
-?>
