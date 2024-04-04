@@ -9,12 +9,9 @@
     <h1>Online Movie Store</h1>
     <?php
     // connect to the db
-    $user = 'root';
-    $pass = ''; 
-    $dsn='mysql:host=localhost;dbname=moviestore';
     try {
-        $db = new PDO($dsn, $user, $pass);
-    
+        $db = new PDO('mysql:host=localhost;dbname=moviestore', 'root', '');
+
     } catch (PDOException $e) {
         print "Error!: " . $e->getMessage() . "<br/>";
         die();
