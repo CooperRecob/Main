@@ -1,6 +1,6 @@
 ## Main REPO for all projects
 
-COMPSCI 220 Folder is for all Intermediate Java work<br>
+UWW is for all Whitewater classwork<br>
 APCS Folder is for all AP Computer Science work (also known as COMPSCI 172)<br>
 Everything in com Folder is not for classes<br>
 
