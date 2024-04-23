@@ -36,7 +36,7 @@
     // display filtered movies
     if (isset($_GET['genre'])) {
         $genre = $_GET['genre'];
-        $movies = $db->query("SELECT * FROM movies WHERE type='$genre'");
+        $movies = $db->query("SELECT * FROM movies WHERE `type` LIKE '%$genre%'");
     }
     echo "<table border='1'>";
     echo "<tr><th>Title</th><th>Genre</th><th>Year</th></tr>";
