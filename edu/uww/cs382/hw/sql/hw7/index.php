@@ -5,13 +5,7 @@
     <title>Homework 7</title>
     <?php
     // connect to the db
-    try {
-        $db = new PDO('mysql:host=localhost;dbname=moviestore', 'root', '');
-
-    } catch (PDOException $e) {
-        print "Error!: " . $e->getMessage() . "<br/>";
-        die();
-    }
+    include 'pdo_connect.php';
     ?>
 </head>
 
@@ -25,7 +19,7 @@
     $popularDramaMovies = $db->query('SELECT DISTINCT title, type, year FROM movies JOIN rentals ON movies.movieID = rentals.movieID WHERE movies.type = "Drama"');
     $recentDisneyMovies = $db->query('SELECT title, type, year FROM disney_movies WHERE year > 2020');
     $disneyFamilyClassics = $db->query('SELECT title, type, year FROM disney_movies WHERE year < 1950');
-    $latestDisneyAnimationMovies = $db->query('SELECT title, type, year FROM disney_movies WHERE year > 2020');
+    $latestDisneyAnimationMovies = $db->query('SELECT title, type, year FROM disney_movies WHERE year > 2020 AND type = "Animation"');
 
     // close db connection
     $db = null;
