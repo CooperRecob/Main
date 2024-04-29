@@ -9,9 +9,9 @@ public class Main {
     // read the map from file
 
     static String[][][][] mapArray = {
-            { FileIO.loadMap("map4"), FileIO.loadMap("map5"), FileIO.loadMap("map6") },
-            { FileIO.loadMap("map"), FileIO.loadMap("map2"), FileIO.loadMap("map3") },
-            { FileIO.loadMap("map7"), FileIO.loadMap("map8"), FileIO.loadMap("map9") }
+            { FileIO.loadMap("com/projects/pokemon/maps/map4"), FileIO.loadMap("com/projects/pokemon/maps/map5"), FileIO.loadMap("com/projects/pokemon/maps/map6") },
+            { FileIO.loadMap("com/projects/pokemon/maps/map"), FileIO.loadMap("com/projects/pokemon/maps/map2"), FileIO.loadMap("com/projects/pokemon/maps/map3") },
+            { FileIO.loadMap("com/projects/pokemon/maps/map7"), FileIO.loadMap("com/projects/pokemon/maps/map8"), FileIO.loadMap("com/projects/pokemon/maps/map9") }
 
     };
 
@@ -37,7 +37,7 @@ public class Main {
         frame.setResizable(true);
 
         // create the character
-        JLabel character = new JLabel(new ImageIcon("com\\projects\\pokemon\\images\\character.png"));
+        JLabel character = new JLabel(new ImageIcon("com/projects/pokemon/images/character.png"));
         character.setBounds(2 * 32, 2 * 32, 32, 32);
         frame.add(character);
 
@@ -73,7 +73,7 @@ public class Main {
                         for (int j = 0; j < 15; j++) {
                             for (int k = 0; k < 15; k++) {
                                 tiles[j][k].setIcon(
-                                        new ImageIcon("com\\projects\\pokemon\\images\\" + map[j][k] + ".png"));
+                                        new ImageIcon("com/projects/pokemon/images/" + map[j][k] + ".png"));
                             }
                         }
 
@@ -92,7 +92,7 @@ public class Main {
                         for (int j = 0; j < 15; j++) {
                             for (int k = 0; k < 15; k++) {
                                 tiles[j][k].setIcon(
-                                        new ImageIcon("com\\projects\\pokemon\\images\\" + map[j][k] + ".png"));
+                                        new ImageIcon("com/projects/pokemon/images/" + map[j][k] + ".png"));
                             }
                         }
 
@@ -109,7 +109,7 @@ public class Main {
                         for (int j = 0; j < 15; j++) {
                             for (int k = 0; k < 15; k++) {
                                 tiles[j][k].setIcon(
-                                        new ImageIcon("com\\projects\\pokemon\\images\\" + map[j][k] + ".png"));
+                                        new ImageIcon("com/projects/pokemon/images/" + map[j][k] + ".png"));
                             }
                         }
                     } else if (!checkCollision(x / 32, (y - 32) / 32)) {
@@ -125,7 +125,7 @@ public class Main {
                         for (int j = 0; j < 15; j++) {
                             for (int k = 0; k < 15; k++) {
                                 tiles[j][k].setIcon(
-                                        new ImageIcon("com\\projects\\pokemon\\images\\" + map[j][k] + ".png"));
+                                        new ImageIcon("com/projects/pokemon/images/" + map[j][k] + ".png"));
                             }
                         }
                     } else if (!checkCollision(x / 32, (y + 32) / 32)) {
@@ -141,7 +141,7 @@ public class Main {
         for (int row = 0; row < 15; row++) {
             for (int col = 0; col < 15; col++) {
                 tiles[row][col] = new JLabel(
-                        new ImageIcon("com\\projects\\pokemon\\images\\" + map[row][col] + ".png"));
+                        new ImageIcon("com/projects/pokemon/images/" + map[row][col] + ".png"));
                 tiles[row][col].setBounds(col * 32, row * 32, 32, 32);
                 frame.add(tiles[row][col]);
             }
