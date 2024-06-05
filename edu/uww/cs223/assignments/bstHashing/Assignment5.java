@@ -1,3 +1,5 @@
+package edu.uww.cs223.assignments.bstHashing;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 

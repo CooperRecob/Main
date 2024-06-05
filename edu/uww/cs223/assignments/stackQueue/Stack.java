@@ -1,3 +1,5 @@
+package edu.uww.cs223.assignments.stackQueue;
+
 public class Stack {
     final int MAX_SIZE = 5;
     int top_of_stack = -1;

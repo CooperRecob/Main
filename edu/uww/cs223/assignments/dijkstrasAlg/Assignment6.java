@@ -1,3 +1,5 @@
+package edu.uww.cs223.assignments.dijkstrasAlg;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.PriorityQueue;

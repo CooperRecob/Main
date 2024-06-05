@@ -1,4 +1,4 @@
-package binarySearch;
+package edu.uww.cs223.assignments.binarySearch;
 
 import java.util.Arrays;
 

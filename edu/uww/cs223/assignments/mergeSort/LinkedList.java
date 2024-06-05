@@ -1,3 +1,5 @@
+package edu.uww.cs223.assignments.mergeSort;
+
 public class LinkedList {
 	private Node head, tail;
 	private int size;

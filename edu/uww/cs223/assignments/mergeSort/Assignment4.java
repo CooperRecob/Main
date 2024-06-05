@@ -1,3 +1,5 @@
+package edu.uww.cs223.assignments.mergeSort;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
