@@ -10,7 +10,7 @@ include ("navigation.php");
 
 // Check if the adminID is already stored using a session variable then display a message
 
-if (empty($_SESSION['adminID']) && empty($_REQUEST['username'])) {
+if (empty($_SESSION['memberID']) && empty($_REQUEST['username'])) {
     // Invalid user
     displayloginform();
     exit();
@@ -44,7 +44,7 @@ switch ($mode) {
                 displayloginform();
             } else {
                 // Validate the username and password
-                $sql = "SELECT id, username FROM `users` 
+                $sql = "SELECT memberID, username FROM `members` 
             WHERE username = :username and password = :password";
 
                 // Bind values to named parameters
@@ -56,10 +56,18 @@ switch ($mode) {
                 $results = fetchResults($db, $sql, $parameterValues);
 
                 // First element of the $results array should include matching record           
-                if (!empty($results[0]['id'])) {
+                if (!empty($results[0]['memberID'])) {
                     // Valid user - Define session variables
-                    $_SESSION['adminID'] = $results[0]['id'];
+                    $_SESSION['memberID'] = $results[0]['memberID'];
 
+                    $sql = "SELECT firstName, lastName FROM `members` 
+                    WHERE memberID = :memberID";
+                    $parameterValues = [
+                        ":memberID" => $results[0]['memberID']
+                    ];
+                    $results = fetchResults($db, $sql, $parameterValues);
+
+                    $_SESSION['name'] = $results[0]['firstName'] . " " . $results[0]['lastName'];
 
                     // Need to reload the page to display navigation links
                     header('Location: index.php');
@@ -73,20 +81,49 @@ switch ($mode) {
             }
         }
         break;
-    case "newmovie":
-        displayMoviePage();
+    case 'catalog':
+        include ('catalog.php');
         break;
-    case "results":
-        displayResults();
+    case 'plan':
+        include ('plan.php');
         break;
-    case "updaterecord":
-        displayUpdatePage();
+    case 'register':
+        // Display the name of the class
+        $schedule_id = $_GET['schedule_id'];
+        $sql = "SELECT * FROM `schedules` JOIN `courses` ON schedules.course_id = courses.course_id WHERE schedule_id = :schedule_id";
+        $parameterValues = [
+            ":schedule_id" => $schedule_id
+        ];
+        $results = fetchResults($db, $sql, $parameterValues);
+        echo "<p>" . $results[0]['subject'] . " " . $results[0]['number'] . " added to the semester plan</p>";
+
+        // Add the course to the semesterplans table for the current user
+        $sql = "INSERT INTO `semesterplans` (memberID, schedule_id) VALUES (:memberID, :schedule_id)";
+        $parameterValues = [
+            ":memberID" => $_SESSION['memberID'],
+            ":schedule_id" => $schedule_id
+        ];
+        $results = fetchResults($db, $sql, $parameterValues);
+
         break;
-    case "updateresults":
-        displayUpdateResults();
+    case 'delete':
+        // Remove the course from the semesterplans table for the current user
+        $sql = "DELETE FROM `semesterplans` WHERE schedule_id = :schedule_id AND memberID = :memberID";
+        $parameterValues = [
+            ":schedule_id" => $_REQUEST['schedule_id'],
+            ":memberID" => $_SESSION['memberID']
+        ];
+        $results = fetchResults($db, $sql, $parameterValues);
+
+        // reload page to display the updated plan
+        include ('plan.php');
+
+        break;
+    case "schedule" || "COMPSCI" || "MATH" || "MAGD" || "CORE" || "GENED":
+        include ('schedule.php');
         break;
     default:
-        displayHomePage();
+        include ('home.html');
         break;
 }
 
@@ -109,81 +146,7 @@ function fetchResults($db, $sql, $parametervalues = null)
 
 function displayHomePage()
 {
-    echo "<h1>Welcome Admin</h1>";
-}
-
-function displayMoviePage()
-{
-    include ('addMovie.php');
-}
-
-function displayUpdatePage()
-{
-    if(empty($_REQUEST['title'])){
-        include ('updateRecordPage.php');
-    } else if (!empty($_REQUEST['title'])){
-        include ('updateRecordForm.php');
-    }
-}
-
-function displayUpdateResults() 
-{
-    if (empty($_REQUEST['newtitle']) || empty($_REQUEST['newyear']) || empty($_REQUEST['newtype'])) {
-        echo "<p>Empty data</p>";
-        exit();
-    } else if (!is_numeric($_REQUEST['newyear'])) { 
-        echo "<p>Invalid year</p>";
-        exit();
-    }
-
-    $db = $GLOBALS['db'];
-
-    // Update the record
-    $sql = "UPDATE `movies` SET title = :newtitle, type = :newtype, year = :newyear WHERE title = :oldtitle";
-    $parameterValues = array(
-        ":newtitle" => $_REQUEST['newtitle'],
-        ":newtype" => $_REQUEST['newtype'],
-        ":newyear" => $_REQUEST['newyear'],
-        ":oldtitle" => $_REQUEST['oldtitle']
-    );
-    $stm = $db->prepare($sql);
-    $stm->execute($parameterValues);
-
-    // Display the updated record
-    echo "<p>The movie \"" . $_REQUEST['oldtitle'] . "\" has been updated to:</p>";
-    echo "<p>title: " . $_REQUEST['newtitle'] . "</p>";
-    echo "<p>type: " . $_REQUEST['newtype'] . "</p>";
-    echo "<p>year: " . $_REQUEST['newyear'] . "</p>";
-}
-
-function displayResults()
-{
-    if (empty($_REQUEST['title']) || empty($_REQUEST['year']) || empty($_REQUEST['type']))  {
-        echo "<p>Empty data</p>";
-        exit();
-    } else if (!is_numeric($_REQUEST['year'])) {
-        echo "<p>Invalid year</p>";
-        exit();
-    }
-
-    $db = $GLOBALS['db'];
-
-    // Insert a new record
-    $sql = "INSERT INTO `movies` (title, type, year) VALUES (:title, :type, :year)";
-    $parameterValues = array(
-        ":title" => $_REQUEST['title'],
-        ":type" => $_REQUEST['type'],
-        ":year" => $_REQUEST['year']
-    );
-    $stm = $db->prepare($sql);
-    $stm->execute($parameterValues);
-
-    // Display the record
-    echo "<p>The following record has been added:</p>";
-    echo "<p>title: " . $_REQUEST['title'] . "</p>";
-    echo "<p>type: " . $_REQUEST['type'] . "</p>";
-    echo "<p>year: " . $_REQUEST['year'] . "</p>";
-
+    echo "<h1>Welcome " . $_SESSION['name'] . "</h1>"; //grab name from session variable NOTWORKING
 }
 
 function displayloginform()
