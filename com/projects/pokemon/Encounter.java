@@ -9,10 +9,12 @@ import javax.swing.JProgressBar;
 public class Encounter {
     static int playerHealth = 120;
     static int enemyHealth = 130;
-    static boolean enemyDead = false;
-    static int potion = 3;
+    static boolean enemyDead;
+    static int potion;
 
     public static void encounter() {
+        enemyDead = false;
+        potion = 3;
 
         // change the window to a battle screen
         JFrame battleFrame = new JFrame("Battle");
